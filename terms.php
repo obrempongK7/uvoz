@@ -5,7 +5,7 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 $settings = getPlatformSettings();
-$appName  = $settings['app_name'] ?? 'Voxu';
+$appName  = $settings['app_name'] ?? 'Uvoz';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@ $appName  = $settings['app_name'] ?? 'Voxu';
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Terms of Service — <?= clean($appName) ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     .static-page{max-width:740px;margin:80px auto;padding:24px}
     .static-page h1{font-size:32px;font-weight:800;margin-bottom:8px}
@@ -70,7 +70,7 @@ $appName  = $settings['app_name'] ?? 'Voxu';
   <p>We may update these terms from time to time. Continued use of the platform constitutes acceptance of the updated terms.</p>
 
   <h2>9. Contact</h2>
-  <p>For questions about these terms, contact us at <?= clean($settings['support_email'] ?? 'support@voxu.app') ?>.</p>
+  <p>For questions about these terms, contact us at <?= clean($settings['support_email'] ?? 'support@uvoz.app') ?>.</p>
 </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — Page & Content Manager
+ * Uvoz Admin — Page & Content Manager
  * Edit About Us, App Links, Landing Page Sections, Static Pages
  * @author  Jcode | ObrempongK
  */
@@ -90,18 +90,18 @@ function sv(array $s, string $k, string $d = ''): string { return htmlspecialcha
 
 // Load FAQ
 $faqs = json_decode($s['page_faqs'] ?? '[]', true) ?: [
-    ['Is Voxu free to use?',       'Yes! Voxu is completely free to join and use.'],
+    ['Is Uvoz free to use?',       'Yes! Uvoz is completely free to join and use.'],
     ['How do I earn?',             'Earn points by posting, getting replies, status views, contact clicks, and campaigns.'],
     ['How do I withdraw?',         'Go to Wallet → Withdraw, choose your method, and follow the process.'],
     ['Is there a minimum withdrawal?', 'Yes, 500 points minimum for free users.'],
-    ['Is Voxu available as an app?',   'Yes, as a PWA you can add it to your home screen from your browser.'],
+    ['Is Uvoz available as an app?',   'Yes, as a PWA you can add it to your home screen from your browser.'],
 ];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Page Manager — Voxu Admin</title>
+  <title>Page Manager — Uvoz Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
   <style>
@@ -175,7 +175,7 @@ $faqs = json_decode($s['page_faqs'] ?? '[]', true) ?: [
           <div class="form-section-title">Download Section Text</div>
           <div class="form-group">
             <label class="form-label">Headline</label>
-            <input class="form-input" name="app_download_headline" value="<?= sv($s,'app_download_headline','Get the Voxu App') ?>" maxlength="80"/>
+            <input class="form-input" name="app_download_headline" value="<?= sv($s,'app_download_headline','Get the Uvoz App') ?>" maxlength="80"/>
           </div>
           <div class="form-group">
             <label class="form-label">Description</label>

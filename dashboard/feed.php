@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Main Feed · v3 · Socimo-inspired layout
+ * Uvoz — Main Feed · v3 · Socimo-inspired layout
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -15,7 +15,7 @@ $userId   = (int)$user['id'];
 $wallet   = getUserWallet($userId);
 $myPlan   = getUserPlan($userId);
 $settings = getPlatformSettings();
-$appName  = clean($settings['app_name'] ?? 'Voxu');
+$appName  = clean($settings['app_name'] ?? 'Uvoz');
 $symbol   = clean($settings['currency_symbol'] ?? '$');
 $recLimit = getUserRecordingLimit($userId);
 $theme    = getTheme();
@@ -85,15 +85,15 @@ $boostTiers = [
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
   <title><?= $tab==='hashtag'&&$hashTag?'#'.clean($hashTag).' — ':'' ?><?= $appName ?></title>
   <link rel="manifest" href="/manifest.json"/>
-  <meta name="theme-color" content="#6C3BFF"/>
+  <meta name="theme-color" content="#6347eb"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>">
 
 <!-- TOP NAV -->
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div class="sk-nav-search">
     <svg class="sk-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input type="text" class="sk-search-input" id="topSearch" placeholder="Search <?= $appName ?>…" autocomplete="off" onkeyup="handleSearch(event)"/>
@@ -103,10 +103,10 @@ $boostTiers = [
     <!-- Language switcher -->
     <div style="position:relative">
       <button class="sk-nav-btn" id="langBtn" onclick="document.getElementById('langMenu').classList.toggle('hidden')" title="Language">
-        <?= VOXU_LANGUAGES[$lang]['flag'] ?? '🌐' ?>
+        <?= UVOZ_LANGUAGES[$lang]['flag'] ?? '🌐' ?>
       </button>
       <div id="langMenu" class="sk-lang-menu hidden">
-        <?php foreach(VOXU_LANGUAGES as $code=>$meta): ?>
+        <?php foreach(UVOZ_LANGUAGES as $code=>$meta): ?>
         <div class="sk-lang-opt <?= $lang===$code?'active':'' ?>" onclick="setLang('<?= $code ?>')">
           <span style="font-size:18px"><?= $meta['flag'] ?></span>
           <div><div style="font-weight:600"><?= htmlspecialchars($meta['native']) ?></div><div style="font-size:11px;color:var(--text3)"><?= htmlspecialchars($meta['name']) ?></div></div>
@@ -606,16 +606,16 @@ $boostTiers = [
 </div>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
-window.VOXU_MAX_RECORD_SECS = <?= ($recLimit===0?99999:$recLimit) ?>;
+window.UVOZ_MAX_RECORD_SECS = <?= ($recLimit===0?99999:$recLimit) ?>;
 const ALLOWED_EMOJIS = ['👍','❤️','🔥','😂','😮','😢','🎉','💯','🙏','👏','🎙','⚡'];
 
 /* ── THEME ─────────────────────────── */
 function toggleTheme() {
   const next = document.body.classList.contains('theme-light') ? 'dark' : 'light';
   document.body.className = 'theme-' + next;
-  document.cookie = 'voxu_theme=' + next + ';path=/;max-age=31536000';
+  document.cookie = 'uvoz_theme=' + next + ';path=/;max-age=31536000';
 }
 
 /* ── LANG ──────────────────────────── */
@@ -846,7 +846,7 @@ function openStatus(id){window.location='/dashboard/status.php?view='+id;}
 
 /* ── INIT ──────────────────────────── */
 VoicePlayer.init();
-VoxuI18n.init();
+UvozI18n.init();
 </script>
 </body>
 </html>

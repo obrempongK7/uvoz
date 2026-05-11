@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — Email Users
+ * Uvoz Admin — Email Users
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -13,7 +13,7 @@ Security::requireRole('admin');
 $admin      = DB::first('SELECT * FROM admins WHERE id=?', [$_SESSION['admin_id']]);
 $activeMenu = 'emails';
 $settings   = getPlatformSettings();
-$appName    = $settings['app_name'] ?? 'Voxu';
+$appName    = $settings['app_name'] ?? 'Uvoz';
 $supportEmail = $settings['support_email'] ?? '';
 $success    = '';
 $error      = '';
@@ -29,19 +29,19 @@ function buildEmailHTML(string $appName, string $subject, string $body): string 
   .wrap{max-width:580px;margin:0 auto;padding:32px 16px}
   .card{background:#16161E;border-radius:12px;padding:32px;border:1px solid #1A1A22}
   .logo{font-size:26px;font-weight:800;color:#fff;margin-bottom:24px}
-  .logo span{color:#6C3BFF}
+  .logo span{color:#6347eb}
   h2{color:#fff;font-size:20px;margin-top:0}
   p{color:#A0A0B0;font-size:14px;line-height:1.7}
-  .btn{display:inline-block;background:#6C3BFF;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin:16px 0}
+  .btn{display:inline-block;background:#6347eb;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;margin:16px 0}
   .footer{text-align:center;font-size:12px;color:#5A5A72;margin-top:20px}
 </style></head>
 <body>
 <div class="wrap">
   <div class="card">
-    <div class="logo">Vo<span>xu</span></div>
+    <div class="logo"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:48px;" /></div>
     <h2>' . htmlspecialchars($subject) . '</h2>
     <div>' . nl2br(htmlspecialchars($body)) . '</div>
-    <a href="' . APP_URL . '" class="btn">Visit Voxu →</a>
+    <a href="' . APP_URL . '" class="btn">Visit Uvoz →</a>
   </div>
   <div class="footer">© ' . date('Y') . ' ' . htmlspecialchars($appName) . ' · <a href="' . APP_URL . '/privacy.php" style="color:#5A5A72">Privacy</a></div>
 </div>
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $headers  = "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                 $headers .= "From: {$appName} <{$supportEmail}>\r\n";
-                $headers .= "X-Mailer: Voxu-Mailer/1.0\r\n";
+                $headers .= "X-Mailer: Uvoz-Mailer/1.0\r\n";
 
                 foreach ($recipients as $r) {
                     $personalBody = str_replace('[USERNAME]', $r['username'], $htmlBody);
@@ -148,7 +148,7 @@ foreach ($allSettings as $k => $v) {
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Email Users — Voxu Admin</title>
+  <title>Email Users — Uvoz Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
   <style>
@@ -210,13 +210,13 @@ foreach ($allSettings as $k => $v) {
           </div>
           <div class="form-group">
             <label class="form-label">Subject Line</label>
-            <input class="form-input" type="text" name="subject" id="emailSubject" required placeholder="e.g. Important update from Voxu"/>
+            <input class="form-input" type="text" name="subject" id="emailSubject" required placeholder="e.g. Important update from Uvoz"/>
           </div>
           <div class="form-group">
             <label class="form-label">Email Body</label>
             <textarea class="form-input" name="body" id="emailBody" rows="8" required
               placeholder="Write your email content here. Use [USERNAME] to personalize with the recipient's username."></textarea>
-            <div class="form-hint">Use [USERNAME] as a placeholder for the user's name. Plain text — will be wrapped in Voxu branded template.</div>
+            <div class="form-hint">Use [USERNAME] as a placeholder for the user's name. Plain text — will be wrapped in Uvoz branded template.</div>
           </div>
           <div style="display:flex;gap:10px">
             <button type="button" class="btn btn-secondary" onclick="previewEmail()">Preview</button>
@@ -289,7 +289,7 @@ function previewEmail() {
   const body = document.getElementById('emailBody').value;
   document.getElementById('emailPreview').innerHTML =
     '<div style="background:#0B0B0F;padding:16px;border-radius:8px">' +
-    '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:12px">Vo<span style="color:#6C3BFF">xu</span></div>' +
+    '<div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:12px">Vo<span style="color:#6347eb">xu</span></div>' +
     '<div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:8px">' + subj.replace(/</g,'&lt;') + '</div>' +
     '<div style="color:#A0A0B0;font-size:13px;white-space:pre-wrap">' + body.replace(/</g,'&lt;') + '</div>' +
     '</div>';

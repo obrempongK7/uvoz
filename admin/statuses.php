@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — Status Posts Management
+ * Uvoz Admin — Status Posts Management
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -65,7 +65,7 @@ $todayClicks = DB::first("SELECT COALESCE(SUM(clicks_count),0) AS n FROM status_
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Statuses — Voxu Admin</title>
+  <title>Statuses — Uvoz Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
 </head>

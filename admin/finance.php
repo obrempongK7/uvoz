@@ -51,7 +51,7 @@ $txTypes = DB::query('SELECT DISTINCT type FROM transactions ORDER BY type');
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Finance — Voxu Admin</title>
+  <title>Finance — Uvoz Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
 </head>

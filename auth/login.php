@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Login · Social login · Email verification
+ * Uvoz — Login · Social login · Email verification
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -12,7 +12,7 @@ if (auth()) redirect('/dashboard/feed.php');
 $error   = '';
 $success = !empty($_GET['verified']) ? '✅ Email verified! You can now log in.' : '';
 $settings = getPlatformSettings();
-$appName  = clean($settings['app_name'] ?? 'Voxu');
+$appName  = clean($settings['app_name'] ?? 'Uvoz');
 $theme    = getTheme();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verifyCsrf();
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta name="csrf-token" content="<?= csrfToken() ?>"/>
 <title>Sign In — <?= $appName ?></title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/css/voxu.css"/>
+<link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>">
 <div class="auth-page">

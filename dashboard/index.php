@@ -52,11 +52,11 @@ $theme = getTheme();
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
-  <title>Voice Hub — Voxu</title>
+  <title>Voice Hub — Uvoz</title>
   <link rel="manifest" href="/manifest.json"/>
-  <meta name="theme-color" content="#6C3BFF"/>
+  <meta name="theme-color" content="#6347eb"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="<?= clean(themeClass()) ?>">
 <!-- TOP NAV -->
@@ -76,7 +76,7 @@ $theme = getTheme();
 <div class="app-layout">
   <div class="page">
     <!-- BALANCE STRIP -->
-    <div class="card card-sm mb-4" style="background:linear-gradient(135deg,#13103a,var(--bg2));border-color:rgba(108,59,255,0.2)">
+    <div class="card card-sm mb-4" style="background:linear-gradient(135deg,#13103a,var(--bg2));border-color:rgba(99,71,235,0.2)">
       <div class="flex items-center justify-between">
         <div>
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px">
@@ -327,10 +327,10 @@ $theme = getTheme();
 </div>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 // Set recording limit from user plan
-window.VOXU_MAX_RECORD_SECS = <?= getUserRecordingLimit((int)$user['id']) === 0 ? 99999 : getUserRecordingLimit((int)$user['id']) ?>;
+window.UVOZ_MAX_RECORD_SECS = <?= getUserRecordingLimit((int)$user['id']) === 0 ? 99999 : getUserRecordingLimit((int)$user['id']) ?>;
 
 // Init voice recorder
 VoiceRecorder.init('recCircle','recTime','recWave','submitVoice');

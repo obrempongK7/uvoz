@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Direct Messages
+ * Uvoz — Direct Messages
  * Followers: unlimited | Non-followers: 2 messages until accepted
  * @author  Jcode | ObrempongK
  */
@@ -14,7 +14,7 @@ requireAuth();
 $user   = auth();
 $userId = (int)$user['id'];
 $settings = getPlatformSettings();
-$theme    = $_COOKIE['voxu_theme'] ?? 'dark';
+$theme    = $_COOKIE['uvoz_theme'] ?? 'dark';
 $convId   = (int)($_GET['conv'] ?? 0);
 
 // ── ENSURE TABLES ──────────────────────────────────────
@@ -95,9 +95,9 @@ if ($convId) {
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
-  <title>Messages — <?= clean($settings['app_name']??'Voxu') ?></title>
+  <title>Messages — <?= clean($settings['app_name']??'Uvoz') ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     body { overflow: hidden; }
     .msg-page { padding-top: var(--nav-h); height: 100vh; display: flex; flex-direction: column; }
@@ -118,7 +118,7 @@ if ($convId) {
 <body class="theme-<?= clean($theme) ?>">
 
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:17px;font-weight:700;color:var(--text)">&#128172; Messages</div>
   <div class="sk-nav-actions">
     <a href="/dashboard/notifications.php" class="sk-nav-btn" title="Notifications">
@@ -297,7 +297,7 @@ if ($convId) {
 </div>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 const CONV_ID    = <?= $convId ?: 'null' ?>;
 const OTHER_ID   = <?= $otherUser ? $activeConv['other_id'] : 'null' ?>;

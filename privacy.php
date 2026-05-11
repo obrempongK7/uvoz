@@ -5,7 +5,7 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 $settings = getPlatformSettings();
-$appName  = $settings['app_name'] ?? 'Voxu';
+$appName  = $settings['app_name'] ?? 'Uvoz';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@ $appName  = $settings['app_name'] ?? 'Voxu';
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Privacy Policy — <?= clean($appName) ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     .static-page{max-width:740px;margin:80px auto;padding:24px}
     .static-page h1{font-size:32px;font-weight:800;margin-bottom:8px}
@@ -77,7 +77,7 @@ $appName  = $settings['app_name'] ?? 'Voxu';
   <p>We retain your data as long as your account is active. Deleted accounts are purged within 30 days.</p>
 
   <h2>9. Contact</h2>
-  <p>For privacy inquiries, contact <?= clean($settings['support_email'] ?? 'privacy@voxu.app') ?>.</p>
+  <p>For privacy inquiries, contact <?= clean($settings['support_email'] ?? 'privacy@uvoz.app') ?>.</p>
 </div>
 </body>
 </html>

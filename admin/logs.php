@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — Audit Logs
+ * Uvoz Admin — Audit Logs
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -22,11 +22,11 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
     if ($tab === 'user') {
         $rows = DB::query("SELECT l.*, u.username FROM users_audit_logs l LEFT JOIN users u ON u.id=l.user_id ORDER BY l.created_at DESC LIMIT 10000");
         $cols = ['id','user_id','username','action','description','ip_address','created_at'];
-        $fn   = 'voxu_user_audit_' . date('Ymd_His') . '.csv';
+        $fn   = 'uvoz_user_audit_' . date('Ymd_His') . '.csv';
     } else {
         $rows = DB::query("SELECT l.*, a.name AS admin_name FROM admin_activity_logs l LEFT JOIN admins a ON a.id=l.admin_id ORDER BY l.created_at DESC LIMIT 10000");
         $cols = ['id','admin_id','admin_name','action','description','ip_address','created_at'];
-        $fn   = 'voxu_admin_logs_' . date('Ymd_His') . '.csv';
+        $fn   = 'uvoz_admin_logs_' . date('Ymd_His') . '.csv';
     }
     header('Content-Type: text/csv; charset=UTF-8');
     header('Content-Disposition: attachment; filename="' . $fn . '"');
@@ -74,7 +74,7 @@ try { $userCount  = DB::count('users_audit_logs');    } catch (Throwable) { $use
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Audit Logs — Voxu Admin</title>
+  <title>Audit Logs — Uvoz Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
 </head>

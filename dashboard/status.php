@@ -10,7 +10,7 @@ requireAuth();
 
 $user     = auth();
 $settings = getPlatformSettings();
-$appName  = clean($settings['app_name'] ?? 'Voxu');
+$appName  = clean($settings['app_name'] ?? 'Uvoz');
 $showCreate = isset($_GET['create']);
 
 // Fetch active statuses (excluding expired)
@@ -42,9 +42,9 @@ $theme = getTheme();
 <html lang="<?= getCurrentLang() ?>" <?= isRtl() ? 'dir="rtl"' : '' ?>>
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Status Hub — Voxu</title>
+  <title>Status Hub — Uvoz</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     .story-row{display:flex;gap:12px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
     .story-row::-webkit-scrollbar{display:none}
@@ -68,7 +68,7 @@ $theme = getTheme();
 </head>
 <body class="<?= clean(themeClass()) ?>">
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:17px;font-weight:700;color:var(--text)">&#10024; Status</div>
   <div class="sk-nav-actions">
     <a href="/dashboard/notifications.php" class="sk-nav-btn" title="Notifications">
@@ -131,7 +131,7 @@ $theme = getTheme();
               <?php elseif ($s['type']==='video' && $s['media_url']): ?>
                 <video src="<?= clean($s['media_url']) ?>" muted preload="metadata"></video>
               <?php else: ?>
-                <div style="width:100%;height:100%;background:linear-gradient(135deg,<?= clean($s['bg_color']??'#6C3BFF,#00D1FF') ?>);display:flex;align-items:center;justify-content:center;padding:12px">
+                <div style="width:100%;height:100%;background:linear-gradient(135deg,<?= clean($s['bg_color']??'#6347eb,#00D1FF') ?>);display:flex;align-items:center;justify-content:center;padding:12px">
                   <span style="font-size:13px;font-weight:700;color:#fff;text-align:center;line-height:1.3"><?= clean(substr($s['text']??'',0,60)) ?></span>
                 </div>
               <?php endif; ?>
@@ -310,7 +310,7 @@ $theme = getTheme();
 </div>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 function switchTab(tab) {
   document.getElementById('pane-discover').classList.toggle('hidden', tab !== 'discover');
@@ -389,7 +389,7 @@ async function deleteStatus(id) {
   if (res?.success) { Toast.success('Deleted'); setTimeout(() => location.reload(), 600); }
 }
 
-// StatusViewer.updateContent is now fully handled by voxu.js
+// StatusViewer.updateContent is now fully handled by uvoz.js
 // We only need to post-process the contact button class for branded styling
 const _origUpdate = StatusViewer.updateContent.bind(StatusViewer);
 StatusViewer.updateContent = function(s) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Social OAuth Handler
+ * Uvoz — Social OAuth Handler
  * Handles Google, Facebook, and X (Twitter) OAuth flows.
  * Configure credentials in config.php or platform settings.
  * @author  Jcode | ObrempongK
@@ -59,12 +59,12 @@ $cfg = $OAUTH[$provider];
 if (!$code) {
     if (empty($cfg['client_id'])) {
         // OAuth not configured — show helpful error
-        $appName = getPlatformSettings()['app_name'] ?? 'Voxu';
+        $appName = getPlatformSettings()['app_name'] ?? 'Uvoz';
         ?><!DOCTYPE html>
         <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
         <title>OAuth Not Configured</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-        <link rel="stylesheet" href="/assets/css/voxu.css"/>
+        <link rel="stylesheet" href="/assets/css/uvoz.css"/>
         </head><body class="theme-dark" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px">
         <div style="max-width:440px;width:100%;text-align:center">
           <div style="font-size:48px;margin-bottom:16px">🔧</div>

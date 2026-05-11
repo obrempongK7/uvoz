@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Register · Social signup · Email verification
+ * Uvoz — Register · Social signup · Email verification
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -11,10 +11,10 @@ require_once __DIR__ . '/../core/i18n.php';
 if (auth()) redirect('/dashboard/feed.php');
 $error=$success='';
 $settings=getPlatformSettings();
-$appName=clean($settings['app_name']??'Voxu');
+$appName=clean($settings['app_name']??'Uvoz');
 $theme=getTheme();
 if ($settings['registration_open']??'1'!='1'){?>
-<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Closed</title><link rel="stylesheet" href="/assets/css/voxu.css"/></head>
+<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Closed</title><link rel="stylesheet" href="/assets/css/uvoz.css"/></head>
 <body class="theme-dark" style="display:flex;align-items:center;justify-content:center;min-height:100vh"><div style="text-align:center"><h2 style="color:var(--text)">Registration is currently closed.</h2><a href="/auth/login.php" class="btn btn-primary" style="margin-top:16px;border-radius:999px">Sign In</a></div></body></html>
 <?php exit; }
 if ($_SERVER['REQUEST_METHOD']==='POST'){
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 <meta name="csrf-token" content="<?= csrfToken() ?>"/>
 <title>Sign Up — <?= $appName ?></title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/css/voxu.css"/>
+<link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>">
 <div class="auth-page">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Installation & Upgrade Wizard
+ * Uvoz — Installation & Upgrade Wizard
  * =====================================================================
  * Run once to create all database tables and seed required data.
  * Supports fresh install AND upgrade (ALTER TABLE migrations).
@@ -687,7 +687,7 @@ function getColumnUpgrades(): array {
 /* ── SEED DATA ──────────────────────────────────────────── */
 function seedSettings(PDO $pdo): void {
     $defaults = [
-        'app_name'             => 'Voxu',
+        'app_name'             => 'Uvoz',
         'app_tagline'          => 'Speak. Be Seen. Earn.',
         'support_email'        => '',
         'currency'             => 'USD',
@@ -712,7 +712,7 @@ function seedSettings(PDO $pdo): void {
         'app_link_ios'         => '',
         'app_link_android'     => '',
         'app_link_huawei'      => '',
-        'brand_color'          => '#6C3BFF',
+        'brand_color'          => '#6347eb',
         'accent_color'         => '#00D1FF',
     ];
     $stmt = $pdo->prepare(
@@ -726,7 +726,7 @@ function seedPlans(PDO $pdo): void {
         [1,'Free',     'free',    0.00,  0.00,  180, 1000, 500, 1.00, 10, 0,0,0,0,0,'#A0A0B0',''],
         [2,'Silver',   'silver',  4.99, 49.99,  300, 2000, 200, 1.50, 20, 0,1,0,0,0,'#00D1FF',''],
         [3,'Gold',     'gold',    9.99, 99.99,  600, 5000, 100, 2.00, 50, 1,1,1,1,0,'#FFB830',''],
-        [4,'Platinum', 'platinum',19.99,199.99,  0, 10000,  50, 3.00,100, 1,1,1,1,1,'#6C3BFF',''],
+        [4,'Platinum', 'platinum',19.99,199.99,  0, 10000,  50, 3.00,100, 1,1,1,1,1,'#6347eb',''],
     ];
     $icons = ['',''];
     $stmt = $pdo->prepare(
@@ -787,31 +787,31 @@ if ($step === 1):
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Voxu Installer</title>
+  <title>Uvoz Installer</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;background:#0B0B0F;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
     .card{background:#16161E;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:40px;width:100%;max-width:600px}
     .logo{font-size:32px;font-weight:800;margin-bottom:4px}
-    .logo span{color:#6C3BFF}
+    .logo span{color:#6347eb}
     .sub{font-size:13px;color:#A0A0B0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px}
     .steps{display:flex;gap:8px;margin-bottom:28px}
     .step{flex:1;height:4px;background:#1A1A22;border-radius:2px}
-    .step.done{background:#6C3BFF}
-    .step.active{background:linear-gradient(90deg,#6C3BFF,#00D1FF)}
+    .step.done{background:#6347eb}
+    .step.active{background:linear-gradient(90deg,#6347eb,#00D1FF)}
     h2{font-size:20px;font-weight:700;margin-bottom:16px}
     .check-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:8px;background:#1A1A22;margin-bottom:8px}
     .check-label{font-size:14px;color:#A0A0B0}
     .check-val{font-size:13px;font-weight:600}
     .ok{color:#00FF9C}.fail{color:#FF4444}
-    .btn{display:block;width:100%;padding:14px;background:#6C3BFF;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;margin-top:20px;transition:.2s}
-    .btn:hover{background:#5A30D0}
+    .btn{display:block;width:100%;padding:14px;background:#6347eb;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;margin-top:20px;transition:.2s}
+    .btn:hover{background:#4b34b1}
     .btn:disabled{opacity:.5;cursor:not-allowed}
     .warn{background:rgba(255,184,48,.1);border:1px solid rgba(255,184,48,.3);color:#FFB830;padding:12px 14px;border-radius:8px;font-size:13px;margin-bottom:16px}
     .info{background:rgba(0,209,255,.1);border:1px solid rgba(0,209,255,.2);color:#00D1FF;padding:12px 14px;border-radius:8px;font-size:13px;margin-bottom:16px}
     label{font-size:13px;color:#A0A0B0;display:block;margin-bottom:5px}
     input,select{width:100%;background:#1A1A22;border:1px solid rgba(255,255,255,.08);color:#fff;padding:11px 14px;border-radius:8px;font-size:14px;outline:none;margin-bottom:14px}
-    input:focus,select:focus{border-color:#6C3BFF;box-shadow:0 0 0 3px rgba(108,59,255,.15)}
+    input:focus,select:focus{border-color:#6347eb;box-shadow:0 0 0 3px rgba(99,71,235,.15)}
     .err-box{background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.4);color:#FF4444;padding:12px 14px;border-radius:8px;font-size:13px;margin-bottom:14px}
     .suc-box{background:rgba(0,255,156,.1);border:1px solid rgba(0,255,156,.3);color:#00FF9C;padding:12px 14px;border-radius:8px;font-size:13px;margin-bottom:14px}
     .cred-box{background:#1A1A22;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px;margin-bottom:14px}
@@ -824,7 +824,7 @@ if ($step === 1):
 </head>
 <body>
 <div class="card">
-  <div class="logo">Vo<span>xu</span></div>
+  <div class="logo"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:48px;" /></div>
   <div class="sub">Installation Wizard</div>
 
   <div class="steps">
@@ -858,24 +858,24 @@ elseif ($step === 2):
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   .card{background:#16161E;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:40px;width:100%;max-width:600px}
-  .logo{font-size:32px;font-weight:800;margin-bottom:4px}.logo span{color:#6C3BFF}
+  .logo{font-size:32px;font-weight:800;margin-bottom:4px}.logo span{color:#6347eb}
   .sub{font-size:13px;color:#A0A0B0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px}
   .steps{display:flex;gap:8px;margin-bottom:28px}
   .step{flex:1;height:4px;background:#1A1A22;border-radius:2px}
-  .step.done{background:#6C3BFF}.step.active{background:linear-gradient(90deg,#6C3BFF,#00D1FF)}
+  .step.done{background:#6347eb}.step.active{background:linear-gradient(90deg,#6347eb,#00D1FF)}
   h2{font-size:20px;font-weight:700;margin-bottom:6px}
   .hint{font-size:13px;color:#5A5A72;margin-bottom:20px}
   label{font-size:13px;color:#A0A0B0;display:block;margin-bottom:5px;margin-top:12px}
   input,select{width:100%;background:#1A1A22;border:1px solid rgba(255,255,255,.08);color:#fff;padding:11px 14px;border-radius:8px;font-size:14px;outline:none}
-  input:focus,select:focus{border-color:#6C3BFF;box-shadow:0 0 0 3px rgba(108,59,255,.15)}
-  .btn{display:block;width:100%;padding:14px;background:#6C3BFF;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:20px;transition:.2s}
-  .btn:hover{background:#5A30D0}
+  input:focus,select:focus{border-color:#6347eb;box-shadow:0 0 0 3px rgba(99,71,235,.15)}
+  .btn{display:block;width:100%;padding:14px;background:#6347eb;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:20px;transition:.2s}
+  .btn:hover{background:#4b34b1}
   .err-box{background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.4);color:#FF4444;padding:12px;border-radius:8px;font-size:13px;margin-bottom:14px}
   .section-title{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:#A0A0B0;margin-top:24px;margin-bottom:4px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.06)}
   .note{font-size:12px;color:#5A5A72;margin-top:4px}
 </style>
 <div class="card">
-  <div class="logo">Vo<span>xu</span></div>
+  <div class="logo"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:48px;" /></div>
   <div class="sub">Installation Wizard</div>
   <div class="steps">
     <div class="step done"></div><div class="step active"></div><div class="step"></div><div class="step"></div>
@@ -1094,10 +1094,10 @@ elseif ($step === 3 && $_SERVER['REQUEST_METHOD'] === 'POST'):
     // Fall through to show errors
     ?>
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Voxu Installer — Error</title>
-<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;background:#0B0B0F;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}.card{background:#16161E;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:40px;width:100%;max-width:600px}.logo{font-size:32px;font-weight:800;margin-bottom:4px}.logo span{color:#6C3BFF}.sub{font-size:13px;color:#A0A0B0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px}h2{font-size:20px;font-weight:700;margin-bottom:16px}.err-box{background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.4);color:#FF4444;padding:12px;border-radius:8px;font-size:13px;margin-bottom:10px}.btn{display:block;width:100%;padding:14px;background:#6C3BFF;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;margin-top:20px;transition:.2s}</style>
+<title>Uvoz Installer — Error</title>
+<style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;background:#0B0B0F;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}.card{background:#16161E;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:40px;width:100%;max-width:600px}.logo{font-size:32px;font-weight:800;margin-bottom:4px}.logo span{color:#6347eb}.sub{font-size:13px;color:#A0A0B0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px}h2{font-size:20px;font-weight:700;margin-bottom:16px}.err-box{background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.4);color:#FF4444;padding:12px;border-radius:8px;font-size:13px;margin-bottom:10px}.btn{display:block;width:100%;padding:14px;background:#6347eb;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;margin-top:20px;transition:.2s}</style>
 </head><body><div class="card">
-<div class="logo">Vo<span>xu</span></div><div class="sub">Installation Wizard</div>
+<div class="logo"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:48px;" /></div><div class="sub">Installation Wizard</div>
 <h2>⚠ Installation Errors</h2>
 <?php foreach ($errors as $e): ?><div class="err-box">✗ <?= h($e) ?></div><?php endforeach; ?>
 <?php foreach ($success as $s): ?><div style="background:rgba(0,255,156,.1);border:1px solid rgba(0,255,156,.3);color:#00FF9C;padding:12px;border-radius:8px;font-size:13px;margin-bottom:10px">✓ <?= h($s) ?></div><?php endforeach; ?>
@@ -1119,15 +1119,15 @@ elseif ($step === 4):
     unset($_SESSION['install_done'],$_SESSION['install_admin_pass']);
 ?>
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Voxu — Installed!</title>
+<title>Uvoz — Installed!</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;background:#0B0B0F;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
   .card{background:#16161E;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:40px;width:100%;max-width:640px}
-  .logo{font-size:32px;font-weight:800;margin-bottom:4px}.logo span{color:#6C3BFF}
+  .logo{font-size:32px;font-weight:800;margin-bottom:4px}.logo span{color:#6347eb}
   .sub{font-size:13px;color:#A0A0B0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:28px}
   .steps{display:flex;gap:8px;margin-bottom:28px}
-  .step{flex:1;height:4px;background:#6C3BFF;border-radius:2px}
+  .step{flex:1;height:4px;background:#6347eb;border-radius:2px}
   .icon{width:72px;height:72px;background:rgba(0,255,156,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px}
   h2{font-size:24px;font-weight:800;text-align:center;margin-bottom:6px}
   .tagline{text-align:center;font-size:14px;color:#A0A0B0;margin-bottom:24px}
@@ -1137,21 +1137,21 @@ elseif ($step === 4):
   .cred-row:last-child{border:none}
   .cred-key{color:#A0A0B0}.cred-val{color:#00FF9C;font-weight:700;font-family:monospace}
   .warn-box{background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.3);color:#FF4444;padding:14px;border-radius:10px;font-size:13px;margin:16px 0;line-height:1.6}
-  .btn{display:block;width:100%;padding:14px;background:#6C3BFF;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;margin-top:10px;transition:.2s}
-  .btn:hover{background:#5A30D0}
+  .btn{display:block;width:100%;padding:14px;background:#6347eb;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;margin-top:10px;transition:.2s}
+  .btn:hover{background:#4b34b1}
   .btn-sec{background:transparent;border:1px solid rgba(255,255,255,.12);color:#A0A0B0}
   .btn-sec:hover{background:rgba(255,255,255,.05);color:#fff}
   .divider{height:1px;background:rgba(255,255,255,.06);margin:20px 0}
 </style>
 </head><body>
 <div class="card">
-  <div class="logo">Vo<span>xu</span></div>
+  <div class="logo"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:48px;" /></div>
   <div class="sub">Installation Wizard</div>
   <div class="steps"><div class="step"></div><div class="step"></div><div class="step"></div><div class="step"></div></div>
 
   <div class="icon">✓</div>
   <h2>Installation Complete!</h2>
-  <p class="tagline">Voxu is ready. Your database has been set up successfully.</p>
+  <p class="tagline">Uvoz is ready. Your database has been set up successfully.</p>
 
   <?php if (!empty($savedErrors)): ?>
     <?php foreach ($savedErrors as $e): ?>

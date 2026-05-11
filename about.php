@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — About Us Page
+ * Uvoz — About Us Page
  * Content editable from Admin → Pages
  * @author  Jcode | ObrempongK
  */
@@ -9,7 +9,7 @@ require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
 $settings = getPlatformSettings();
-$appName  = $settings['app_name']    ?? 'Voxu';
+$appName  = $settings['app_name']    ?? 'Uvoz';
 $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
 $me       = auth();
 
@@ -28,15 +28,15 @@ $teamDesc     = $settings['page_about_team']    ?? "We are a small, passionate t
   <title>About Us — <?= clean($appName) ?></title>
   <meta name="description" content="Learn about <?= clean($appName) ?> — <?= clean($tagline) ?>"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     body{background:var(--bg)}
     .about-page{padding-top:64px}
 
     /* HERO */
     .ab-hero{min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;position:relative;overflow:hidden}
-    .ab-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(108,59,255,.1) 0%,transparent 70%)}
-    .ab-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(108,59,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(108,59,255,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
+    .ab-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(99,71,235,.1) 0%,transparent 70%)}
+    .ab-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,71,235,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,71,235,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
     .ab-hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
     .ab-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--purple);margin-bottom:14px}
     .ab-title{font-family:'Poppins',sans-serif;font-size:clamp(32px,6vw,58px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:20px}
@@ -60,7 +60,7 @@ $teamDesc     = $settings['page_about_team']    ?? "We are a small, passionate t
     /* VALUES */
     .values-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:40px}
     .value-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.2s}
-    .value-card:hover{border-color:rgba(108,59,255,.4);transform:translateY(-3px)}
+    .value-card:hover{border-color:rgba(99,71,235,.4);transform:translateY(-3px)}
     .value-icon{font-size:28px;margin-bottom:10px}
     .value-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
     .value-body{font-size:13px;color:var(--text2);line-height:1.65}
@@ -77,7 +77,7 @@ $teamDesc     = $settings['page_about_team']    ?? "We are a small, passionate t
     .team-inner{max-width:900px;margin:0 auto}
 
     /* APP DOWNLOAD */
-    .app-band{background:linear-gradient(135deg,#13103a,var(--bg2));border-top:1px solid rgba(108,59,255,.2);border-bottom:1px solid rgba(108,59,255,.2);padding:60px 24px;text-align:center}
+    .app-band{background:linear-gradient(135deg,#13103a,var(--bg2));border-top:1px solid rgba(99,71,235,.2);border-bottom:1px solid rgba(99,71,235,.2);padding:60px 24px;text-align:center}
     .app-band-inner{max-width:600px;margin:0 auto}
     .app-band-title{font-family:'Poppins',sans-serif;font-size:clamp(22px,4vw,36px);font-weight:800;color:#fff;margin-bottom:10px}
     .app-band-desc{font-size:15px;color:var(--text2);margin-bottom:28px}
@@ -91,7 +91,7 @@ $teamDesc     = $settings['page_about_team']    ?? "We are a small, passionate t
 
     /* CTA */
     .ab-cta{text-align:center;padding:80px 24px;position:relative;overflow:hidden}
-    .ab-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(108,59,255,.08),transparent)}
+    .ab-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(99,71,235,.08),transparent)}
     .ab-cta-title{font-family:'Poppins',sans-serif;font-size:clamp(28px,5vw,48px);font-weight:800;color:#fff;position:relative;z-index:1;margin-bottom:12px}
     .ab-cta-title span{color:var(--purple)}
     .ab-cta-sub{font-size:15px;color:var(--text2);max-width:440px;margin:0 auto 28px;position:relative;z-index:1}
@@ -208,7 +208,7 @@ $totalStatuses= DB::count('status_posts');
 <!-- TEAM -->
 <div class="team-section">
   <div class="team-inner">
-    <div class="ab-section-label">The People Behind Voxu</div>
+    <div class="ab-section-label">The People Behind Uvoz</div>
     <h2 class="ab-section-title">Our Team</h2>
     <p class="ab-section-body"><?= clean($teamDesc) ?></p>
     <div style="margin-top:28px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:12px;display:inline-flex;align-items:center;gap:14px">

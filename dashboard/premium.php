@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Premium Plans Page
+ * Uvoz — Premium Plans Page
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -28,9 +28,9 @@ function secLabel(int $s): string {
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
-  <title>Go Premium — Voxu</title>
+  <title>Go Premium — Uvoz</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     .premium-page{max-width:900px;margin:0 auto;padding:80px 16px 100px}
     .premium-hero{text-align:center;margin-bottom:48px}
@@ -77,7 +77,7 @@ function secLabel(int $s): string {
 </head>
 <body class="<?= clean(themeClass()) ?>">
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:17px;font-weight:700;color:var(--text)">&#11088; Premium</div>
   <div class="sk-nav-actions">
     <a href="/dashboard/notifications.php" class="sk-nav-btn" title="Notifications">
@@ -262,7 +262,7 @@ function secLabel(int $s): string {
 </div>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 let selectedPlan = null;
 let billing = 'monthly';

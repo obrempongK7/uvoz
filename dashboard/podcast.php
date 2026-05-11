@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Podcast Hub
+ * Uvoz — Podcast Hub
  * Free users: 10 min | Silver: 30 min | Gold: 60 min | Platinum: unlimited
  * @author  Jcode | ObrempongK
  */
@@ -66,7 +66,7 @@ $totalPages = max(1, ceil($total/$perPage));
 
 $categories = ['general','technology','business','health','education','entertainment','news','sports','arts','science'];
 $unreadNotifs = DB::count('notifications','user_id=? AND is_read=0',[$userId]);
-$theme = $_COOKIE['voxu_theme'] ?? 'dark';
+$theme = $_COOKIE['uvoz_theme'] ?? 'dark';
 
 function fmtDur(int $s): string {
     if (!$s) return '0:00';
@@ -79,14 +79,14 @@ function fmtDur(int $s): string {
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
-  <title>Podcast — <?= clean($settings['app_name']??'Voxu') ?></title>
+  <title>Podcast — <?= clean($settings['app_name']??'Uvoz') ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     .pod-page{padding:calc(var(--nav-h)+16px) 16px calc(var(--bottom-h)+20px);max-width:960px;margin:0 auto}
     .pod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
     .pod-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:var(--transition);cursor:pointer}
-    .pod-card:hover{border-color:rgba(108,59,255,.4);transform:translateY(-2px);box-shadow:var(--shadow)}
+    .pod-card:hover{border-color:rgba(99,71,235,.4);transform:translateY(-2px);box-shadow:var(--shadow)}
     .pod-cover{width:100%;aspect-ratio:1;object-fit:cover;background:linear-gradient(135deg,var(--purple-l),var(--bg3));display:flex;align-items:center;justify-content:center;font-size:48px}
     .pod-cover img{width:100%;height:100%;object-fit:cover}
     .pod-info{padding:14px}
@@ -112,7 +112,7 @@ function fmtDur(int $s): string {
 <body class="theme-<?= clean($theme) ?>">
 
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:17px;font-weight:700;color:var(--text)">&#127911; Podcasts</div>
   <div class="sk-nav-actions">
     <button class="btn btn-primary btn-sm" style="border-radius:999px" onclick="Modal.open('upload-modal')">+ Upload</button>
@@ -295,7 +295,7 @@ function fmtDur(int $s): string {
 </div>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 const POD_LIMIT_SECS = <?= $podLimit === 0 ? 999999 : $podLimit ?>;
 let podAudio = null;

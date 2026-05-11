@@ -3,7 +3,7 @@
  * @author  Jcode | ObrempongK
  */
 /* ============================================================
-   VOXU — Database Layer (PDO Singleton)
+   UVOZ — Database Layer (PDO Singleton)
    ============================================================ */
 if (!defined('APP_NAME')) require_once __DIR__ . '/../config.php';
 

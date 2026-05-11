@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — User Detail View
+ * Uvoz Admin — User Detail View
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -143,7 +143,7 @@ $recentPosts     = DB::query('SELECT * FROM posts WHERE user_id=? ORDER BY creat
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>User: <?= clean($viewUser['username']) ?> — Voxu Admin</title>
+  <title>User: <?= clean($viewUser['username']) ?> — Uvoz Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
   <style>

@@ -8,7 +8,7 @@ require_once __DIR__ . '/includes/functions.php';
 if (auth()) redirect('/dashboard/');
 
 $settings = getPlatformSettings();
-$appName  = $settings['app_name']    ?? 'Voxu';
+$appName  = $settings['app_name']    ?? 'Uvoz';
 $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
 ?>
 <!DOCTYPE html>
@@ -19,10 +19,10 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
   <meta name="description" content="<?= clean($appName) ?> — Share your voice, post your status, and earn from every interaction." />
   <title><?= clean($appName) ?> — <?= clean($tagline) ?></title>
   <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#6C3BFF" />
+  <meta name="theme-color" content="#6347eb" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#0B0B0F;--bg2:#1A1A22;--purple:#6C3BFF;--purple-d:#5A30D0;--blue:#00D1FF;--green:#00FF9C;--text:#fff;--text2:#A0A0B0;--border:rgba(255,255,255,0.08)}
+    :root{--bg:#0B0B0F;--bg2:#1A1A22;--purple:#6347eb;--purple-d:#4b34b1;--blue:#00D1FF;--green:#00FF9C;--text:#fff;--text2:#A0A0B0;--border:rgba(255,255,255,0.08)}
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden}
@@ -46,17 +46,17 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
 
     /* HERO */
     .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 0 60px}
-    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 60% 50%,rgba(108,59,255,0.12) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(0,209,255,0.06) 0%,transparent 60%)}
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(108,59,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(108,59,255,0.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 60% 50%,rgba(99,71,235,0.12) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(0,209,255,0.06) 0%,transparent 60%)}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,71,235,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(99,71,235,0.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
     .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px;width:100%}
-    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(108,59,255,0.12);border:1px solid rgba(108,59,255,0.3);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(99,71,235,0.12);border:1px solid rgba(99,71,235,0.3);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px}
     .hero-title{font-family:'Poppins',sans-serif;font-size:clamp(40px,5vw,68px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px}
     .hero-title .highlight{color:var(--purple)}
     .hero-title .hl2{background:linear-gradient(90deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .hero-desc{font-size:16px;color:var(--text2);line-height:1.7;margin-bottom:32px;max-width:480px}
     .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
     .btn-hero-primary{padding:14px 28px;background:var(--purple);color:#fff;border-radius:10px;font-size:16px;font-weight:700;transition:.2s;display:inline-flex;align-items:center;gap:8px}
-    .btn-hero-primary:hover{background:var(--purple-d);transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,59,255,0.4)}
+    .btn-hero-primary:hover{background:var(--purple-d);transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,71,235,0.4)}
     .btn-hero-secondary{padding:14px 28px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.15);border-radius:10px;font-size:16px;font-weight:600;transition:.2s}
     .btn-hero-secondary:hover{background:rgba(255,255,255,0.06)}
     .hero-trust{display:flex;align-items:center;gap:10px;margin-top:24px;font-size:13px;color:var(--text2)}
@@ -93,7 +93,7 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;position:relative}
     .steps::before{content:'';position:absolute;top:32px;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent);z-index:0}
     .step-card{background:#16161E;border:1px solid var(--border);border-radius:16px;padding:28px 22px;text-align:center;position:relative;z-index:1;transition:.3s}
-    .step-card:hover{border-color:rgba(108,59,255,0.4);transform:translateY(-4px)}
+    .step-card:hover{border-color:rgba(99,71,235,0.4);transform:translateY(-4px)}
     .step-num{width:52px;height:52px;background:var(--purple);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;margin:0 auto 16px}
     .step-title{font-size:18px;font-weight:700;margin-bottom:8px}
     .step-desc{font-size:14px;color:var(--text2);line-height:1.6}
@@ -101,8 +101,8 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
     /* FEATURES */
     .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
     .feature-card{background:#16161E;border:1px solid var(--border);border-radius:20px;padding:32px;transition:.3s;position:relative;overflow:hidden}
-    .feature-card::before{content:'';position:absolute;inset:0;background:var(--feat-bg,radial-gradient(ellipse 60% 60% at 80% 20%,rgba(108,59,255,0.08),transparent));pointer-events:none}
-    .feature-card:hover{border-color:rgba(108,59,255,0.3);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
+    .feature-card::before{content:'';position:absolute;inset:0;background:var(--feat-bg,radial-gradient(ellipse 60% 60% at 80% 20%,rgba(99,71,235,0.08),transparent));pointer-events:none}
+    .feature-card:hover{border-color:rgba(99,71,235,0.3);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
     .feat-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px}
     .feat-title{font-size:22px;font-weight:700;margin-bottom:12px}
     .feat-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:16px}
@@ -127,7 +127,7 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
     .uc-title{font-size:17px;font-weight:700;margin-bottom:8px}
     .uc-desc{font-size:14px;color:var(--text2);line-height:1.6}
 
-    /* WHY VOXU */
+    /* WHY UVOZ */
     .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
     .why-item{display:flex;align-items:flex-start;gap:12px;background:#16161E;border:1px solid var(--border);border-radius:12px;padding:16px}
     .why-dot{width:8px;height:8px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:5px}
@@ -147,14 +147,14 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
 
     /* CTA */
     .cta-section{text-align:center;position:relative;overflow:hidden;padding:100px 0}
-    .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(108,59,255,0.1) 0%,transparent 70%)}
+    .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(99,71,235,0.1) 0%,transparent 70%)}
     .cta-section h2{font-family:'Poppins',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:800;position:relative;z-index:1;margin-bottom:14px}
     .cta-section h2 span{color:var(--purple)}
     .cta-section p{color:var(--text2);font-size:16px;position:relative;z-index:1;max-width:440px;margin:0 auto 32px}
     .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
     .btn-cta{padding:16px 32px;border-radius:12px;font-size:16px;font-weight:700;transition:.2s}
     .btn-cta.primary{background:var(--purple);color:#fff}
-    .btn-cta.primary:hover{background:var(--purple-d);transform:translateY(-2px);box-shadow:0 10px 40px rgba(108,59,255,0.4)}
+    .btn-cta.primary:hover{background:var(--purple-d);transform:translateY(-2px);box-shadow:0 10px 40px rgba(99,71,235,0.4)}
     .btn-cta.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.15)}
     .btn-cta.ghost:hover{background:rgba(255,255,255,0.05)}
 
@@ -195,11 +195,11 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo">Vo<span>xu</span></a>
+    <a href="/" class="nav-logo"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:32px;" /></a>
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#earn">Earn</a>
-      <a href="#why">Why Voxu</a>
+      <a href="#why">Why Uvoz</a>
     <a href="/dashboard/premium.php" style="color:var(--purple);font-weight:600">⭐ Premium</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -279,7 +279,7 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
   <div class="container">
     <div class="section-center">
       <div class="section-label">Simple Process</div>
-      <h2 class="section-title">How Voxu Works</h2>
+      <h2 class="section-title">How Uvoz Works</h2>
       <p class="section-desc">Three steps to start earning from your voice and content.</p>
     </div>
     <div class="steps">
@@ -308,8 +308,8 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
     <div class="section-label">Core Features</div>
     <h2 class="section-title">Two Powerful Hubs</h2>
     <div class="features-grid">
-      <div class="feature-card" style="--feat-bg:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(108,59,255,0.1),transparent)">
-        <div class="feat-icon" style="background:rgba(108,59,255,0.12)">🎙</div>
+      <div class="feature-card" style="--feat-bg:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(99,71,235,0.1),transparent)">
+        <div class="feat-icon" style="background:rgba(99,71,235,0.12)">🎙</div>
         <div class="feat-title">Voice Hub</div>
         <p style="color:var(--text2);font-size:14px">Your Voice Matters — share opinions, join live conversations, and build your voice identity.</p>
         <ul class="feat-list">
@@ -394,7 +394,7 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
   </div>
 </section>
 
-<!-- WHY VOXU -->
+<!-- WHY UVOZ -->
 <section id="why">
   <div class="container">
     <div class="section-label">Why Us</div>
@@ -402,7 +402,7 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
     <div class="why-grid">
       <?php
       $whys = [
-        ['Voice-First Interaction','Unlike text platforms, Voxu puts your real voice at the center of every conversation.'],
+        ['Voice-First Interaction','Unlike text platforms, Uvoz puts your real voice at the center of every conversation.'],
         ['Status + Earning System','The first platform where your status posts generate real income from views and clicks.'],
         ['Direct Contact Feature','Turn viewers into contacts instantly — WhatsApp, Instagram, and more.'],
         ['Low Data Usage','Optimized for mobile-first users with slower connections. Fast, efficient, inclusive.'],
@@ -433,12 +433,12 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
     <div class="faq">
       <?php
       $faqs = [
-        ['Is Voxu free to use?','Yes! Voxu is completely free to join and use. You earn points and withdraw real cash from your activity — no subscription required.'],
-        ['How do I earn on Voxu?','You earn points by posting voice content, getting replies, having your status viewed, getting contact clicks, and participating in campaigns. Points convert to real money.'],
+        ['Is Uvoz free to use?','Yes! Uvoz is completely free to join and use. You earn points and withdraw real cash from your activity — no subscription required.'],
+        ['How do I earn on Uvoz?','You earn points by posting voice content, getting replies, having your status viewed, getting contact clicks, and participating in campaigns. Points convert to real money.'],
         ['How do I withdraw my earnings?','Go to your Wallet, select Withdraw, choose your payment method (mobile money, bank transfer, etc.), and follow the simple process.'],
         ['What kind of content can I post?','You can post voice recordings (your opinions, stories, questions), and status updates (images, videos, or text with contact links).'],
         ['Is there a minimum withdrawal amount?','Yes, the minimum withdrawal is 500 points (equivalent to your local currency based on the conversion rate). This keeps transactions efficient.'],
-        ['Is Voxu available as a mobile app?','Voxu is a Progressive Web App (PWA). You can add it to your home screen from your browser for a full app-like experience — no app store required.'],
+        ['Is Uvoz available as a mobile app?','Uvoz is a Progressive Web App (PWA). You can add it to your home screen from your browser for a full app-like experience — no app store required.'],
       ];
       foreach($faqs as $i => $faq):
       ?>
@@ -460,11 +460,11 @@ $tagline  = $settings['app_tagline'] ?? 'Speak. Be Seen. Earn.';
 $iosLink     = $settings['app_link_ios']          ?? '';
 $androidLink = $settings['app_link_android']      ?? '';
 $huaweiLink  = $settings['app_link_huawei']       ?? '';
-$dlHeadline  = $settings['app_download_headline'] ?? 'Get the ' . ($settings['app_name'] ?? 'Voxu') . ' App';
+$dlHeadline  = $settings['app_download_headline'] ?? 'Get the ' . ($settings['app_name'] ?? 'Uvoz') . ' App';
 $dlDesc      = $settings['app_download_desc']     ?? 'Available on iOS, Android, and as a Progressive Web App.';
 if ($iosLink || $androidLink || $huaweiLink):
 ?>
-<section style="background:linear-gradient(135deg,#13103a,var(--bg2));border-top:1px solid rgba(108,59,255,.2);border-bottom:1px solid rgba(108,59,255,.2);padding:72px 0">
+<section style="background:linear-gradient(135deg,#13103a,var(--bg2));border-top:1px solid rgba(99,71,235,.2);border-bottom:1px solid rgba(99,71,235,.2);padding:72px 0">
   <div class="container" style="text-align:center">
     <div class="section-label" style="justify-content:center">📱 Mobile App</div>
     <h2 class="section-title" style="margin-bottom:10px"><?= clean($dlHeadline) ?></h2>
@@ -501,7 +501,7 @@ if ($iosLink || $androidLink || $huaweiLink):
 <section class="cta-section">
   <div class="container">
     <h2>Start Earning With<br/><span>Your Voice</span> Today</h2>
-    <p>Join thousands of creators, students, and businesses already earning on Voxu.</p>
+    <p>Join thousands of creators, students, and businesses already earning on Uvoz.</p>
     <div class="cta-btns">
       <a href="/auth/register.php" class="btn-cta primary">Create Free Account</a>
       <a href="/auth/login.php"    class="btn-cta ghost">I Already Have an Account</a>
@@ -514,7 +514,7 @@ if ($iosLink || $androidLink || $huaweiLink):
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="logo-text">Vo<span>xu</span></div>
+        <div class="logo-text"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:32px;" /></div>
         <p>Speak. Be Seen. Earn.<br/>The voice-first earning platform.</p>
       </div>
       <div class="footer-links">

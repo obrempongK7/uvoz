@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Public Post View
+ * Uvoz — Public Post View
  * URL: /post/{id}  or  /@{username}/{id}
  * @author  Jcode | ObrempongK
  */
@@ -10,7 +10,7 @@ require_once __DIR__ . '/includes/functions.php';
 
 $postId   = (int)($_GET['id'] ?? 0);
 $settings = getPlatformSettings();
-$appName  = $settings['app_name'] ?? 'Voxu';
+$appName  = $settings['app_name'] ?? 'Uvoz';
 $me       = auth();
 
 if (!$postId) {
@@ -73,17 +73,17 @@ $ogUrl     = APP_URL . '/post/' . $postId;
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title><?= $pageTitle ?></title>
-  <meta name="description" content="Listen to @<?= clean($post['username']) ?>'s voice on Voxu: <?= clean(substr($post['title'],0,120)) ?>"/>
+  <meta name="description" content="Listen to @<?= clean($post['username']) ?>'s voice on Uvoz: <?= clean(substr($post['title'],0,120)) ?>"/>
   <!-- Open Graph -->
   <meta property="og:title"       content="<?= $pageTitle ?>"/>
-  <meta property="og:description" content="Listen on Voxu — Speak. Be Seen. Earn."/>
+  <meta property="og:description" content="Listen on Uvoz — Speak. Be Seen. Earn."/>
   <meta property="og:url"         content="<?= $ogUrl ?>"/>
   <meta property="og:type"        content="article"/>
   <meta name="twitter:card"       content="summary"/>
   <meta name="twitter:title"      content="<?= $pageTitle ?>"/>
   <link rel="canonical"           href="<?= $ogUrl ?>"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     .post-page { max-width: 660px; margin: 0 auto; padding: 80px 16px 100px; }
     .back-btn  { display:inline-flex;align-items:center;gap:6px;color:var(--text2);font-size:13px;margin-bottom:24px;text-decoration:none;transition:.2s; }
@@ -109,7 +109,7 @@ $ogUrl     = APP_URL . '/post/' . $postId;
     /* Replies */
     .replies-section { margin-bottom:20px; }
     .reply-card { background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;transition:.2s; }
-    .reply-card:hover { border-color:rgba(108,59,255,.3); }
+    .reply-card:hover { border-color:rgba(99,71,235,.3); }
     .reply-header { display:flex;align-items:center;gap:10px;margin-bottom:10px; }
     .reply-text  { font-size:14px;color:var(--text);line-height:1.6; }
     /* Voice reply recorder */
@@ -266,7 +266,7 @@ $ogUrl     = APP_URL . '/post/' . $postId;
   </div>
   <?php else: ?>
   <div class="card text-center" style="padding:24px;margin-bottom:20px">
-    <p style="margin-bottom:12px;font-size:14px">Join Voxu to reply with your voice and earn points</p>
+    <p style="margin-bottom:12px;font-size:14px">Join Uvoz to reply with your voice and earn points</p>
     <a href="/auth/register.php" class="btn btn-primary">Join Free →</a>
   </div>
   <?php endif; ?>
@@ -360,7 +360,7 @@ $ogUrl     = APP_URL . '/post/' . $postId;
 <?php endif; ?>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 /* ── Main Post Player ─────────────────────────────── */
 const postAudio    = new Audio('<?= clean($post['audio_url'] ?? '') ?>');

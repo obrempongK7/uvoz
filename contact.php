@@ -1,14 +1,14 @@
 <?php
 /**
  * @author  Jcode | ObrempongK
- * Voxu — Contact Page
+ * Uvoz — Contact Page
  */
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
 $settings  = getPlatformSettings();
-$appName   = $settings['app_name']    ?? 'Voxu';
+$appName   = $settings['app_name']    ?? 'Uvoz';
 $supportEmail = $settings['support_email'] ?? '';
 
 $sent  = false;
@@ -41,15 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Send email if support email is configured
         if ($supportEmail) {
-            $headers  = "From: Voxu Contact <noreply@{$_SERVER['HTTP_HOST']}>\r\n";
+            $headers  = "From: Uvoz Contact <noreply@{$_SERVER['HTTP_HOST']}>\r\n";
             $headers .= "Reply-To: {$email}\r\n";
             $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-            $body     = "New contact form submission on Voxu\n\n";
+            $body     = "New contact form submission on Uvoz\n\n";
             $body    .= "Name:    {$name}\n";
             $body    .= "Email:   {$email}\n";
             $body    .= "Subject: {$subject}\n\n";
             $body    .= "Message:\n{$message}\n";
-            @mail($supportEmail, "[Voxu Contact] {$subject}", $body, $headers);
+            @mail($supportEmail, "[Uvoz Contact] {$subject}", $body, $headers);
         }
 
         $sent = true;
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>Contact Us — <?= clean($appName) ?></title>
   <meta name="description" content="Get in touch with the <?= clean($appName) ?> team."/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     /* ── Page layout ─────────────────────────────── */
     .contact-page {
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       border-radius: 12px;
       transition: .2s;
     }
-    .contact-method:hover { border-color: rgba(108,59,255,.4); }
+    .contact-method:hover { border-color: rgba(99,71,235,.4); }
     .cm-icon {
       width: 40px; height: 40px;
       border-radius: 10px;
@@ -204,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       justify-content: center;
       gap: 8px;
     }
-    .submit-btn:hover { background: var(--purple-d); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(108,59,255,.4); }
+    .submit-btn:hover { background: var(--purple-d); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99,71,235,.4); }
     .submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
     /* ── Alerts ──────────────────────────────────── */
     .al {
@@ -300,7 +300,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="contact-methods">
         <?php if ($supportEmail): ?>
         <div class="contact-method">
-          <div class="cm-icon" style="background:rgba(108,59,255,.12)">📧</div>
+          <div class="cm-icon" style="background:rgba(99,71,235,.12)">📧</div>
           <div>
             <div class="cm-title">Email Support</div>
             <div class="cm-val"><a href="mailto:<?= clean($supportEmail) ?>"><?= clean($supportEmail) ?></a></div>
@@ -437,7 +437,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </footer>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 // Character counter for message textarea
 const msgArea = document.getElementById('cm');

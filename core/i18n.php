@@ -1,12 +1,12 @@
 <?php
 /**
- * Voxu — Internationalization (i18n) System
+ * Uvoz — Internationalization (i18n) System
  * Supports 15 languages. Loaded once per request via session.
  * @author  Jcode | ObrempongK
  */
 
 // All supported languages
-define('VOXU_LANGUAGES', [
+define('UVOZ_LANGUAGES', [
     'en'    => ['name' => 'English',                'native' => 'English',      'flag' => '🇺🇸', 'rtl' => false],
     'zh'    => ['name' => 'Chinese (Simplified)',    'native' => '中文',          'flag' => '🇨🇳', 'rtl' => false],
     'es'    => ['name' => 'Spanish',                 'native' => 'Español',      'flag' => '🇪🇸', 'rtl' => false],
@@ -26,7 +26,7 @@ define('VOXU_LANGUAGES', [
 
 // Translation strings — add more as needed
 // Format: 'key' => ['en' => '...', 'fr' => '...', ...]
-$VOXU_STRINGS = [
+$UVOZ_STRINGS = [
     'home'            => ['en'=>'Home',          'fr'=>'Accueil',     'es'=>'Inicio',      'ar'=>'الرئيسية',   'pt'=>'Início',      'zh'=>'主页',    'sw'=>'Nyumbani',  'ha'=>'Gida',       'de'=>'Startseite', 'no'=>'Hjem',     'ja'=>'ホーム',    'hi'=>'होम',         'ko'=>'홈',      'ru'=>'Главная',  'id'=>'Beranda'],
     'explore'         => ['en'=>'Explore',       'fr'=>'Explorer',    'es'=>'Explorar',    'ar'=>'استكشف',     'pt'=>'Explorar',    'zh'=>'探索',    'sw'=>'Gundua',    'ha'=>'Bincika',    'de'=>'Entdecken',  'no'=>'Utforsk',  'ja'=>'探索',     'hi'=>'एक्सप्लोर', 'ko'=>'탐색',    'ru'=>'Обзор',    'id'=>'Jelajahi'],
     'notifications'   => ['en'=>'Notifications', 'fr'=>'Notifications','es'=>'Notificaciones','ar'=>'الإشعارات', 'pt'=>'Notificações','zh'=>'通知',    'sw'=>'Arifa',     'ha'=>'Sanarwa',    'de'=>'Benachrichtigungen','no'=>'Varsler','ja'=>'通知',   'hi'=>'सूचनाएं',   'ko'=>'알림',    'ru'=>'Уведомления','id'=>'Notifikasi'],
@@ -52,14 +52,14 @@ $VOXU_STRINGS = [
  */
 function getCurrentLang(): string {
     // 1. Session preference
-    if (!empty($_SESSION['voxu_lang'])) {
-        $l = $_SESSION['voxu_lang'];
-        if (array_key_exists($l, VOXU_LANGUAGES)) return $l;
+    if (!empty($_SESSION['uvoz_lang'])) {
+        $l = $_SESSION['uvoz_lang'];
+        if (array_key_exists($l, UVOZ_LANGUAGES)) return $l;
     }
     // 2. Cookie
-    if (!empty($_COOKIE['voxu_lang'])) {
-        $l = $_COOKIE['voxu_lang'];
-        if (array_key_exists($l, VOXU_LANGUAGES)) return $l;
+    if (!empty($_COOKIE['uvoz_lang'])) {
+        $l = $_COOKIE['uvoz_lang'];
+        if (array_key_exists($l, UVOZ_LANGUAGES)) return $l;
     }
     // 3. Browser Accept-Language
     $accept = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'en';
@@ -67,8 +67,8 @@ function getCurrentLang(): string {
     foreach ($parts as $part) {
         $code = strtolower(trim(explode(';', $part)[0]));
         $short = explode('-', $code)[0];
-        if (array_key_exists($code, VOXU_LANGUAGES))  return $code;
-        if (array_key_exists($short, VOXU_LANGUAGES)) return $short;
+        if (array_key_exists($code, UVOZ_LANGUAGES))  return $code;
+        if (array_key_exists($short, UVOZ_LANGUAGES)) return $short;
     }
     return 'en';
 }
@@ -78,10 +78,10 @@ function getCurrentLang(): string {
  * Usage: __('home') or __('home', 'fr')
  */
 function __(string $key, ?string $lang = null): string {
-    global $VOXU_STRINGS;
+    global $UVOZ_STRINGS;
     $lang = $lang ?? getCurrentLang();
-    return $VOXU_STRINGS[$key][$lang]
-        ?? $VOXU_STRINGS[$key]['en']
+    return $UVOZ_STRINGS[$key][$lang]
+        ?? $UVOZ_STRINGS[$key]['en']
         ?? $key;
 }
 
@@ -89,22 +89,22 @@ function __(string $key, ?string $lang = null): string {
  * Set language (saves to session + cookie).
  */
 function setLanguage(string $lang): void {
-    if (!array_key_exists($lang, VOXU_LANGUAGES)) $lang = 'en';
-    $_SESSION['voxu_lang'] = $lang;
-    setcookie('voxu_lang', $lang, time() + 60*60*24*365, '/', '', false, false);
+    if (!array_key_exists($lang, UVOZ_LANGUAGES)) $lang = 'en';
+    $_SESSION['uvoz_lang'] = $lang;
+    setcookie('uvoz_lang', $lang, time() + 60*60*24*365, '/', '', false, false);
 }
 
 /**
  * Is current language RTL?
  */
 function isRtl(): bool {
-    return VOXU_LANGUAGES[getCurrentLang()]['rtl'] ?? false;
+    return UVOZ_LANGUAGES[getCurrentLang()]['rtl'] ?? false;
 }
 
 function getI18nStrings(string $lang = 'en'): array {
-    global $VOXU_STRINGS;
+    global $UVOZ_STRINGS;
     $out = [];
-    foreach ($VOXU_STRINGS as $key => $translations) {
+    foreach ($UVOZ_STRINGS as $key => $translations) {
         $out[$key] = $translations[$lang] ?? $translations['en'] ?? $key;
     }
     return $out;

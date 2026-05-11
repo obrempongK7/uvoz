@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Voxu | Voice-First Social Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#6800b4",
+                    "primary-container": "#9333ea",
+                    "on-surface": "#1f1924",
+                    "on-secondary-fixed": "#002109",
+                    "surface-bright": "#fff7fe",
+                    "on-surface-variant": "#4d4354",
+                    "on-primary-fixed": "#2c0051",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#ddb8ff",
+                    "on-secondary-fixed-variant": "#005321",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#cfc2d7",
+                    "surface-variant": "#eadfee",
+                    "on-tertiary-fixed-variant": "#683d00",
+                    "tertiary-fixed": "#ffdcbc",
+                    "on-background": "#1f1924",
+                    "tertiary": "#784700",
+                    "error-container": "#ffdad6",
+                    "surface": "#fff7fe",
+                    "on-secondary-container": "#007432",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#861fdd",
+                    "background": "#fff7fe",
+                    "tertiary-fixed-dim": "#ffb86b",
+                    "on-tertiary-container": "#ffe8d4",
+                    "surface-container": "#f6eaf9",
+                    "inverse-on-surface": "#f8edfc",
+                    "surface-container-high": "#f0e4f3",
+                    "inverse-primary": "#ddb8ff",
+                    "on-primary-container": "#f6e6ff",
+                    "secondary-fixed": "#6bff8f",
+                    "surface-container-highest": "#eadfee",
+                    "surface-dim": "#e1d6e5",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#f0dbff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#006e2f",
+                    "primary": "#7800ce",
+                    "on-tertiary-fixed": "#2c1700",
+                    "secondary-container": "#6bff8f",
+                    "tertiary-container": "#9a5c00",
+                    "inverse-surface": "#342e39",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#4ae176",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#fbf0ff",
+                    "outline": "#7e7386"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "48px",
+                    "xxl": "80px"
+            },
+            "fontFamily": {},
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .waveform-bar {
+            @apply bg-primary rounded-full;
+            transition: height 0.3s ease;
+        }
+        .glass {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Top AppBar -->
+<header class="bg-surface/70 dark:bg-surface-dim/70 backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm flex justify-between items-center w-full px-lg py-md">
+<div class="flex items-center gap-md">
+<span class="font-h2 text-h2 font-bold text-primary dark:text-primary-fixed-dim tracking-tight">Voxu</span>
+<div class="hidden md:flex relative ml-xl">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-xl pr-md py-sm bg-surface-container-low border-none rounded-full w-80 focus:ring-2 focus:ring-primary transition-all" placeholder="Search voices, creators..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-high/50 transition-colors duration-200 rounded-full scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-high/50 transition-colors duration-200 rounded-full scale-95 active:opacity-80 transition-transform flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">1,240</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary cursor-pointer">
+<img alt="User profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujuzRSgpJ6ixAVH6eBH4kFpOatEczrEcIZFtZs4wsRNeYCIoLsQCO7PHo7sNMTt5Hc71leaixMf4WG6XGtfv8Z3McPG_ok2xFYTb9sKu0GC1zC5uQN6xIhGvsNYX4CcdZ9kTlzb9kcDq7bblaXlDzkDaYtANZDFkHJmYwsoVHWPcR3cu0D4IPphpcjt-feL764G5L3BumN4QWLY-hHfqhAu04Z_xZNb93xFZbEp1h3VvKFRRIjVuPCwz4Cc"/>
+</div>
+</div>
+</header>
+<div class="flex max-w-[1600px] mx-auto min-h-screen">
+<!-- Left SideNavBar -->
+<aside class="hidden lg:flex flex-col gap-md p-md w-64 h-[calc(100vh-80px)] sticky top-20 border-r border-outline-variant/20 bg-surface dark:bg-surface-dim">
+<nav class="flex flex-col gap-xs flex-grow">
+<a class="bg-primary-container text-on-primary-container rounded-xl font-bold flex items-center gap-md p-md translate-x-1 hover:translate-x-2 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-xl transition-all flex items-center gap-md p-md translate-x-1 hover:translate-x-2 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-label-md">Explore</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-xl transition-all flex items-center gap-md p-md translate-x-1 hover:translate-x-2 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-md text-label-md">Chat</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-xl transition-all flex items-center gap-md p-md translate-x-1 hover:translate-x-2 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+<span class="font-label-md text-label-md">Podcast</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-xl transition-all flex items-center gap-md p-md translate-x-1 hover:translate-x-2 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Wallet</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest rounded-xl transition-all flex items-center gap-md p-md translate-x-1 hover:translate-x-2 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label-md text-label-md">Premium</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary py-md rounded-xl font-label-md text-label-md shadow-md hover:bg-primary-container transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Go Live
+                </button>
+</div>
+</aside>
+<!-- Main Feed Content -->
+<main class="flex-grow px-lg py-lg max-w-3xl border-r border-outline-variant/10">
+<!-- Feed Filter Tabs -->
+<div class="flex gap-md mb-lg">
+<button class="px-lg py-sm bg-primary text-on-primary rounded-full font-label-md text-label-md">For You</button>
+<button class="px-lg py-sm bg-surface-container text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Following</button>
+<button class="px-lg py-sm bg-surface-container text-on-surface-variant rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Latest</button>
+</div>
+<!-- Audio Post 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-lg mb-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-md">
+<img alt="User Avatar" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujVJ03Lk-4IzwsOfWdn_06--weLYfX_7GshOYWSwDpA2HGywyHBHkhukZqS0o451YUzSMKyqH4YbI_msInFQNYiG3X0fF-Q9VAmluaByp4vVoVe3cK6HQ5xXA590_MVvkrfABKVeZYEhdbHub_DiOJPlpmviJ4MS2Ei2WJKw4owMkowz7AKygnK50TBqzEW3L4mhLfXveRhSFjp7e1cSGhMjy5ZR5PPw_K_Cvs5cGR0UGLaMuR2SBrh2D-y"/>
+<div>
+<div class="flex items-center gap-xs">
+<h3 class="font-label-md text-label-md text-on-surface">Alex Rivers</h3>
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-caption text-on-surface-variant">@arivers • 2h ago</p>
+</div>
+</div>
+<span class="bg-secondary-container text-on-secondary-container px-md py-xs rounded-full font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="payments">payments</span>
+                        Earn +2.50
+                    </span>
+</div>
+<p class="text-body-md text-on-surface mb-lg">Thoughts on the future of voice-based crypto platforms? I think we're seeing a shift in how content is monetized directly through engagement.</p>
+<div class="bg-surface-container-low rounded-xl p-md mb-lg">
+<div class="flex items-center gap-md mb-sm">
+<button class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[32px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex-grow flex items-end gap-[2px] h-10 overflow-hidden">
+<!-- Visualizer Mockup -->
+<div class="w-1 bg-primary/20 h-4 rounded-full"></div>
+<div class="w-1 bg-primary/40 h-6 rounded-full"></div>
+<div class="w-1 bg-primary/60 h-8 rounded-full"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="w-1 bg-primary h-7 rounded-full"></div>
+<div class="w-1 bg-primary/80 h-9 rounded-full"></div>
+<div class="w-1 bg-primary h-5 rounded-full"></div>
+<div class="w-1 bg-primary/30 h-4 rounded-full"></div>
+<div class="w-1 bg-primary/60 h-8 rounded-full"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="w-1 bg-primary/50 h-6 rounded-full"></div>
+<div class="w-1 bg-primary/20 h-3 rounded-full"></div>
+<div class="w-1 bg-primary/80 h-9 rounded-full"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="w-1 bg-primary/40 h-7 rounded-full"></div>
+<div class="w-1 bg-primary/60 h-8 rounded-full"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="w-1 bg-primary h-7 rounded-full"></div>
+<div class="w-1 bg-primary/80 h-9 rounded-full"></div>
+<div class="w-1 bg-primary h-5 rounded-full"></div>
+<div class="w-1 bg-primary/30 h-4 rounded-full"></div>
+<div class="w-1 bg-primary/60 h-8 rounded-full"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="w-1 bg-primary/50 h-6 rounded-full"></div>
+<div class="w-1 bg-primary/20 h-3 rounded-full"></div>
+<div class="w-1 bg-primary/80 h-9 rounded-full"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+</div>
+<span class="text-caption text-on-surface-variant tabular-nums">0:45 / 2:30</span>
+</div>
+</div>
+<div class="flex items-center gap-xl">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+<span class="text-label-md">1.2k</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-md">84</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+<span class="text-label-md">12</span>
+</button>
+</div>
+</article>
+<!-- Audio Post 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-lg mb-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-md">
+<img alt="User Avatar" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ui3HOLQTKilGPguOlcJ-rGskl-tWm4SpukTfllQy_CC89EcyNoQmIhQ05nK6a-RMgHbXs8CiIDkf3KA5Ik1KuLYB6M2h4IbkRLiu7uoUBaLsB-ltQGoXGGHy-gasWj46dfGeFduxk1Apg3O5fAvIAzEDLj9UoN1_NHb7H7CQzorN5hV2idlKTDNyaJ1_-iK3FAvvmfiwSh8nGPazNDpTKo9GzN9kDMSyQAfXCwMq2-ogN1h0_CAmNsI1fgW"/>
+<div>
+<div class="flex items-center gap-xs">
+<h3 class="font-label-md text-label-md text-on-surface">Elena S.</h3>
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] px-sm py-[2px] rounded-full uppercase tracking-widest font-bold">PRO</span>
+</div>
+<p class="text-caption text-on-surface-variant">@elena_s • 4h ago</p>
+</div>
+</div>
+<span class="bg-secondary-container text-on-secondary-container px-md py-xs rounded-full font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="payments">payments</span>
+                        Earn +5.00
+                    </span>
+</div>
+<p class="text-body-md text-on-surface mb-lg">A quick meditation guide for those working from home today. Breathe in, breathe out... 🧘‍♀️</p>
+<div class="bg-surface-container-low rounded-xl p-md mb-lg border border-primary/10">
+<div class="flex items-center gap-md">
+<button class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[32px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex-grow bg-outline-variant/20 h-1 rounded-full relative">
+<div class="absolute left-0 top-0 h-full w-1/3 bg-primary rounded-full"></div>
+</div>
+<span class="text-caption text-on-surface-variant tabular-nums">1:12 / 5:00</span>
+</div>
+</div>
+<div class="flex items-center gap-xl">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+<span class="text-label-md">3.8k</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-md">241</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+<span class="text-label-md">115</span>
+</button>
+</div>
+</article>
+<!-- Audio Post 3 (Bento Style/Campaign Highlight) -->
+<section class="grid grid-cols-2 gap-md mb-lg">
+<div class="col-span-2 bg-primary text-on-primary p-lg rounded-xl flex items-center justify-between shadow-lg overflow-hidden relative">
+<div class="relative z-10">
+<h2 class="font-h2 text-h2 mb-sm">Exclusive Workshop</h2>
+<p class="font-body-md text-body-md opacity-90 mb-md max-w-sm">Join the "Voice Economy 101" live session with industry leaders starting in 20 minutes.</p>
+<button class="bg-on-primary text-primary px-lg py-md rounded-full font-label-md text-label-md shadow-md hover:scale-105 transition-transform">Reserve Seat</button>
+</div>
+<img alt="Event Banner" class="absolute right-0 top-0 h-full w-1/3 object-cover opacity-50 grayscale mix-blend-overlay" src="https://lh3.googleusercontent.com/aida/ADBb0ujRZLMEyqSaonRPMoko1HCh6yGifNLDEjmvlIxqj6WI2o4-fPz-k9JpsZSoPzp7wmXJP5T6VvFuuaTUYbNelOoyYR1_WkLWi__QH94DzSQN1wds1HsNj_IkdJuUl3IORgMZlmx9addevC_iME2immNNcQlMhVNZ1KHvo96YZICx5ntpkiLurpnSTBmzuCiLUYENmCn2J8-azFygdp5zoRbXYaOcC8aWkwd9wB2ekBRstvACbIQw7qOElsmb"/>
+</div>
+</section>
+</main>
+<!-- Right Sidebar (Wallet & Stats) -->
+<aside class="hidden xl:flex flex-col gap-lg p-lg w-[360px] sticky top-20 h-[calc(100vh-80px)] overflow-y-auto">
+<!-- Wallet Card -->
+<div class="bg-surface-container-high rounded-xl p-lg shadow-sm border border-outline-variant/20">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Your Wallet</h3>
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="mb-lg">
+<div class="text-display font-display text-primary">1,240.50</div>
+<div class="text-caption text-on-surface-variant">VX Points (≈ $124.05 USD)</div>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<button class="bg-secondary text-on-secondary py-sm rounded-xl font-label-md text-label-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_upward">arrow_upward</span>
+                        Withdraw
+                    </button>
+<button class="bg-surface-container-highest text-on-surface-variant py-sm rounded-xl font-label-md text-label-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+                        History
+                    </button>
+</div>
+</div>
+<!-- Trending Campaigns -->
+<div class="bg-surface-container rounded-xl p-lg border border-outline-variant/10">
+<h3 class="font-label-md text-label-md text-on-surface mb-lg">Trending Campaigns</h3>
+<div class="flex flex-col gap-md">
+<div class="flex items-center gap-md group cursor-pointer">
+<div class="w-12 h-12 bg-tertiary-container rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface">ASMR Challenge</h4>
+<p class="text-caption text-secondary font-bold">15,000 VX Pool</p>
+</div>
+</div>
+<div class="flex items-center gap-md group cursor-pointer">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="music_note">music_note</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface">Voxu Originals</h4>
+<p class="text-caption text-secondary font-bold">10,000 VX Pool</p>
+</div>
+</div>
+<div class="flex items-center gap-md group cursor-pointer">
+<div class="w-12 h-12 bg-on-secondary-container/20 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="campaign">campaign</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface">Daily Check-in</h4>
+<p class="text-caption text-on-surface-variant">50 VX daily</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg py-sm text-primary font-label-md text-label-md border border-primary/20 rounded-xl hover:bg-primary/5 transition-colors">View All Campaigns</button>
+</div>
+<!-- Top Earners -->
+<div class="bg-surface-container rounded-xl p-lg border border-outline-variant/10">
+<h3 class="font-label-md text-label-md text-on-surface mb-lg">Weekly Top Earners</h3>
+<div class="flex flex-col gap-md">
+<div class="flex items-center gap-md">
+<span class="text-label-md font-bold text-on-surface-variant w-4">1</span>
+<img alt="Top Earner" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujGQrNOs0mS0OPtYWYEmHIUwM7Mcj4rcJy45tVBviOM5ICeEuUnERES-6xtjS07xfcJSZ8lmwzTYX_4duHwZ5Jz-0WtKCoZpGEVs-P2ryyc6q2RY_xoBsMCxjv5Zszg-tNcKhjJyPRUyq-RP4TFrevAD_D2Gflz5kJzuhh6GOG-M8fYbCJ-zO6BEBjonnE68onCbqfdeZ8BglYix-JGQK1TZudz4KzMbLQ8lXjAbeA1QI5AWcAv3ykvZNQ"/>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface">Sarah K.</h4>
+<p class="text-caption text-on-surface-variant">4.2k followers</p>
+</div>
+<div class="text-right">
+<div class="text-label-md text-secondary font-bold">+12,500</div>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="text-label-md font-bold text-on-surface-variant w-4">2</span>
+<img alt="Top Earner" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujNAZgcIM6pSKNvRNGJy4bJA5OPoB9WXt5V6VUv9DilfnTp01xF3omcD1B0a_ePbh9Fvc3Hlg09JU60TC28gjt7X4a3aYabf77NFobSFZfXFmKBDNtPFCBUfgKEtZRFG-bEEnMOUXs5NR7gA9k7Sy_vy_u5nd_pFvyU44OgG1zw1b2vuYFud-dzrQzewIOUjjF0MLdKcHz9fy4TUodSZfMhCJOK11qPfPNG-eVAu4glX1ST9X9tkG0Jb2w"/>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface">Marcus Dev</h4>
+<p class="text-caption text-on-surface-variant">1.8k followers</p>
+</div>
+<div class="text-right">
+<div class="text-label-md text-secondary font-bold">+9,200</div>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<span class="text-label-md font-bold text-on-surface-variant w-4">3</span>
+<img alt="Top Earner" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujoiXn9C7z5d8x8u03X8etc_3gQZ38uh2wnKLwXJ-kATSVxFiguHd3Yt_3Z3BZn1curWlZ1d8_NYVk3x8ztuP9PH2n4hTdEGEM96Q5UDTerMTxf56NwHXhyaqRDYNUE5mE5ChT5Dbacw62ml_M_NQinuSf-V0zZ5skUzqkmOYx7aMRBhUOJha8boEYGoml7AjusjHYQxrL7kAuoymXUnZHdNKEoYH7OQf0HcDeEd8E06Akv3ksG8OXyIg8"/>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface">Luna Voice</h4>
+<p class="text-caption text-on-surface-variant">5.4k followers</p>
+</div>
+<div class="text-right">
+<div class="text-label-md text-secondary font-bold">+8,850</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Links -->
+<footer class="mt-auto pb-lg px-md">
+<div class="flex flex-wrap gap-md text-caption text-on-surface-variant opacity-60">
+<a class="hover:underline" href="#">Privacy</a>
+<a class="hover:underline" href="#">Terms</a>
+<a class="hover:underline" href="#">Cookies</a>
+<a class="hover:underline" href="#">Guidelines</a>
+<p>© 2024 Voxu Inc.</p>
+</div>
+</footer>
+</aside>
+</div>
+<!-- Floating Audio Player (Glassmorphism) -->
+<div class="fixed bottom-lg left-1/2 -translate-x-1/2 w-full max-w-2xl px-md z-50">
+<div class="glass bg-surface/70 border border-outline-variant/30 rounded-xxl p-md shadow-2xl flex items-center gap-md">
+<img alt="Now Playing Thumbnail" class="w-14 h-14 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ui3HOLQTKilGPguOlcJ-rGskl-tWm4SpukTfllQy_CC89EcyNoQmIhQ05nK6a-RMgHbXs8CiIDkf3KA5Ik1KuLYB6M2h4IbkRLiu7uoUBaLsB-ltQGoXGGHy-gasWj46dfGeFduxk1Apg3O5fAvIAzEDLj9UoN1_NHb7H7CQzorN5hV2idlKTDNyaJ1_-iK3FAvvmfiwSh8nGPazNDpTKo9GzN9kDMSyQAfXCwMq2-ogN1h0_CAmNsI1fgW"/>
+<div class="flex-grow overflow-hidden">
+<h4 class="font-label-md text-label-md text-on-surface truncate">Quick Meditation Guide</h4>
+<p class="text-caption text-on-surface-variant truncate">Elena S. • 1:12 / 5:00</p>
+<div class="mt-xs w-full bg-outline-variant/20 h-1 rounded-full relative">
+<div class="absolute left-0 top-0 h-full w-1/3 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="skip_previous">skip_previous</span>
+</button>
+<button class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="pause" data-weight="fill" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="skip_next">skip_next</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

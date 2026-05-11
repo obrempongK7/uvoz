@@ -51,9 +51,9 @@ $theme = getTheme();
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
-  <title>Wallet — Voxu</title>
+  <title>Wallet — Uvoz</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
   <style>
     .theme-toggle { width: 38px; height: 20px; background: var(--bg3); border-radius: 10px; position: relative; cursor: pointer; border: 1px solid var(--border2); flex-shrink: 0; }
     .theme-toggle-knob { position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--purple); transition: left .2s; }
@@ -62,7 +62,7 @@ $theme = getTheme();
 </head>
 <body class="<?= clean(themeClass()) ?>">
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:16px;font-weight:700;color:var(--text)">&#128179; Wallet</div>
   <div class="sk-nav-actions">
     <a href="/dashboard/notifications.php" class="sk-nav-btn" title="Notifications">
@@ -312,7 +312,7 @@ $theme = getTheme();
 </div>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 const RATE = <?= $rate ?>;
 const SYMBOL = '<?= $symbol ?>';

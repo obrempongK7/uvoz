@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — User Profile Page · Extended info · Socimo-inspired
+ * Uvoz — User Profile Page · Extended info · Socimo-inspired
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -14,7 +14,7 @@ $me      = auth();
 $myId    = (int)$me['id'];
 $uParam  = sanitize($_GET['u'] ?? $me['username']);
 $settings = getPlatformSettings();
-$appName  = clean($settings['app_name'] ?? 'Voxu');
+$appName  = clean($settings['app_name'] ?? 'Uvoz');
 $theme    = getTheme();
 
 try {
@@ -62,12 +62,12 @@ $age  = $target['date_of_birth'] ? floor((time()-strtotime($target['date_of_birt
 <meta name="csrf-token" content="<?= csrfToken() ?>"/>
 <title>@<?= clean($target['username']) ?> — <?= $appName ?></title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/css/voxu.css"/>
+<link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>">
 
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:16px;font-weight:700;color:var(--text)">@<?= clean($target['username']) ?></div>
   <div class="sk-nav-actions">
     <a href="/dashboard/notifications.php" class="sk-nav-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></a>
@@ -273,11 +273,11 @@ $age  = $target['date_of_birth'] ? floor((time()-strtotime($target['date_of_birt
 </nav>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 function switchTab(t){window.location.href='?u=<?= urlencode($uParam) ?>&tab='+t;}
 async function toggleFollow(id,btn){const res=await API.post('/follow',{user_id:id});if(res?.success){const isNow=btn.textContent==='Follow';btn.textContent=isNow?'Following':'Follow';btn.className='btn '+(isNow?'btn-secondary':'btn-primary')+' btn-sm';btn.style.borderRadius='999px';}}
 VoicePlayer.init();
-VoxuI18n.init();
+UvozI18n.init();
 </script>
 </body></html>

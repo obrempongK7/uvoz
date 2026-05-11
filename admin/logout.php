@@ -1,9 +1,9 @@
 <?php
 /**
  * @author  Jcode | ObrempongK
- * Voxu — Admin Logout
+ * Uvoz — Admin Logout
  * FIX: Removed early session_start() that used wrong session name.
- *      config.php handles session bootstrap with correct 'voxu_sess' name.
+ *      config.php handles session bootstrap with correct 'uvoz_sess' name.
  */
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../includes/db.php';

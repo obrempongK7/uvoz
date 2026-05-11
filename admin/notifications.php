@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — Announcements & Notifications
+ * Uvoz Admin — Announcements & Notifications
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -82,7 +82,7 @@ $activeWeek  = DB::count('users', 'status="active" AND last_login >= DATE_SUB(NO
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Notifications — Voxu Admin</title>
+  <title>Notifications — Uvoz Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
 </head>

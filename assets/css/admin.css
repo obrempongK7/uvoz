@@ -1,11 +1,11 @@
 /* ============================================================
-   VOXU ADMIN — Stylesheet
+   UVOZ ADMIN — Stylesheet
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root{
   --bg:#0B0B0F;--bg2:#1A1A22;--bg3:#141418;--card:#16161E;
-  --purple:#6C3BFF;--purple-d:#5A30D0;--purple-l:rgba(108,59,255,0.15);
+  --purple:#6347eb;--purple-d:#4b34b1;--purple-l:rgba(99,71,235,0.15);
   --blue:#00D1FF;--blue-l:rgba(0,209,255,0.12);
   --green:#00FF9C;--green-l:rgba(0,255,156,0.12);
   --text:#FFFFFF;--text2:#A0A0B0;--text3:#5A5A72;

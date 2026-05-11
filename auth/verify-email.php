@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Email Verification
+ * Uvoz — Email Verification
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -9,7 +9,7 @@ require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../core/i18n.php';
 
 $token   = sanitize($_GET['token'] ?? '');
-$appName = clean(getPlatformSettings()['app_name'] ?? 'Voxu');
+$appName = clean(getPlatformSettings()['app_name'] ?? 'Uvoz');
 $theme   = getTheme();
 
 if (!$token) redirect('/auth/login.php');
@@ -27,7 +27,7 @@ if ($userId) {
 <head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Verification Failed — <?= $appName ?></title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/css/voxu.css"/>
+<link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px">
 <div style="max-width:400px;width:100%;text-align:center">

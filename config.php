@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Application Configuration
+ * Uvoz — Application Configuration
  * @author  Jcode | ObrempongK
  *
  * INSTRUCTIONS:
@@ -12,7 +12,7 @@
  */
 
 /* ── APPLICATION ─────────────────────────────────────────── */
-define('APP_NAME',    'Voxu');
+define('APP_NAME',    'Uvoz');
 define('APP_VERSION', '2.1.0');
 define('APP_URL',     'http://yourdomain.com');   // ← CHANGE: no trailing slash
 define('APP_DIR',     __DIR__);
@@ -35,7 +35,7 @@ define('MAX_VOICE_MB',  20);
 define('MAX_STATUS_MB', 50);
 
 /* ── SESSION ─────────────────────────────────────────────── */
-define('SESSION_NAME', 'voxu_sess');
+define('SESSION_NAME', 'uvoz_sess');
 define('SESSION_LIFE', 86400 * 30);   // 30 days
 
 /* ── EARNING DEFAULTS (overridden by platform_settings DB) ─ */

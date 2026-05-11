@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Notifications · Socimo-inspired
+ * Uvoz — Notifications · Socimo-inspired
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -13,7 +13,7 @@ requireAuth();
 $user    = auth();
 $userId  = (int)$user['id'];
 $settings = getPlatformSettings();
-$appName  = clean($settings['app_name'] ?? 'Voxu');
+$appName  = clean($settings['app_name'] ?? 'Uvoz');
 $theme    = getTheme();
 
 if ($_GET['mark_all'] ?? false) {
@@ -68,12 +68,12 @@ $totalPages = max(1, ceil($total/$perPage));
 <meta name="csrf-token" content="<?= csrfToken() ?>"/>
 <title>Notifications — <?= $appName ?></title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/css/voxu.css"/>
+<link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>">
 
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:16px;font-weight:700;color:var(--text)">Notifications <?php if($unread>0): ?><span class="badge badge-purple"><?= $unread ?></span><?php endif; ?></div>
   <div class="sk-nav-actions">
     <?php if($unread>0): ?><a href="?mark_all=1" class="btn btn-ghost btn-sm" style="font-size:13px">Mark all read</a><?php endif; ?>
@@ -158,7 +158,7 @@ $totalPages = max(1, ceil($total/$perPage));
 </nav>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 function filterType(t) {
   document.querySelectorAll('.notif-item').forEach(el => {
@@ -168,6 +168,6 @@ function filterType(t) {
     el.classList.toggle('active', i===(['all','reply','follow','energy'].indexOf(t)||0));
   });
 }
-VoxuI18n.init();
+UvozI18n.init();
 </script>
 </body></html>

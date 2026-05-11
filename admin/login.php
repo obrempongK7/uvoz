@@ -1,10 +1,10 @@
 <?php
 /**
  * @author  Jcode | ObrempongK
- * Voxu — Admin Login
+ * Uvoz — Admin Login
  * FIX: Removed manual session_start() that fired before config.php set
- *      session_name('voxu_sess'). This caused admin_id to be stored in
- *      PHPSESSID while all other admin pages read from voxu_sess → loop.
+ *      session_name('uvoz_sess'). This caused admin_id to be stored in
+ *      PHPSESSID while all other admin pages read from uvoz_sess → loop.
  */
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../includes/db.php';
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Admin Login — Voxu</title>
+  <title>Admin Login — Uvoz</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
   <style>
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <div class="login-card">
-  <div class="logo">Vo<span>xu</span></div>
+  <div class="logo"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:48px;" /></div>
   <div class="logo-sub">Admin Control Panel</div>
 
   <?php if ($error): ?>
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </form>
 
   <div class="div"></div>
-  <div class="bk"><a href="/">← Back to Voxu</a></div>
+  <div class="bk"><a href="/">← Back to Uvoz</a></div>
 </div>
 <script>
 document.getElementById('af').addEventListener('submit',function(){

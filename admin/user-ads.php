@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — User Ad Campaigns Review
+ * Uvoz Admin — User Ad Campaigns Review
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -116,5 +116,5 @@ try {
     <?php endif; ?>
   </div>
 </div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 </body></html>

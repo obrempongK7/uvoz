@@ -83,7 +83,7 @@ function gs(array $s, string $k, string $d='') { return $s[$k] ?? $d; }
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Settings — Voxu Admin</title>
+  <title>Settings — Uvoz Admin</title>
   <meta name="csrf" content="<?= csrfToken() ?>"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>
@@ -113,7 +113,7 @@ function gs(array $s, string $k, string $d='') { return $s[$k] ?? $d; }
       <div class="form-section">
         <div class="form-section-title">App Identity</div>
         <div class="form-row">
-          <div class="form-group"><label class="form-label">App Name</label><input class="form-input" name="app_name" value="<?= clean(gs($s,'app_name','Voxu')) ?>"/></div>
+          <div class="form-group"><label class="form-label">App Name</label><input class="form-input" name="app_name" value="<?= clean(gs($s,'app_name','Uvoz')) ?>"/></div>
           <div class="form-group"><label class="form-label">Tagline</label><input class="form-input" name="app_tagline" value="<?= clean(gs($s,'app_tagline','Speak. Be Seen. Earn.')) ?>"/></div>
         </div>
         <div class="form-group"><label class="form-label">Support Email</label><input class="form-input" type="email" name="support_email" value="<?= clean(gs($s,'support_email')) ?>"/></div>
@@ -226,8 +226,8 @@ function gs(array $s, string $k, string $d='') { return $s[$k] ?? $d; }
             <div class="form-group">
               <label class="form-label">Primary / Brand Colour</label>
               <div style="display:flex;gap:8px;align-items:center">
-                <input type="color" name="brand_color" value="<?= clean($s['brand_color'] ?? '#6C3BFF') ?>" style="width:48px;height:38px;border:none;background:none;cursor:pointer;border-radius:6px"/>
-                <input class="form-input" type="text" id="brandColorText" value="<?= clean($s['brand_color'] ?? '#6C3BFF') ?>" maxlength="7" style="flex:1"/>
+                <input type="color" name="brand_color" value="<?= clean($s['brand_color'] ?? '#6347eb') ?>" style="width:48px;height:38px;border:none;background:none;cursor:pointer;border-radius:6px"/>
+                <input class="form-input" type="text" id="brandColorText" value="<?= clean($s['brand_color'] ?? '#6347eb') ?>" maxlength="7" style="flex:1"/>
               </div>
             </div>
             <div class="form-group">

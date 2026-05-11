@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu Admin — Advertising Manager
+ * Uvoz Admin — Advertising Manager
  * Place image or HTML ads in various sections of the site
  * @author  Jcode | ObrempongK
  */
@@ -145,7 +145,7 @@ $ctr        = $totalImpr > 0 ? round($totalClicks / $totalImpr * 100, 2) : 0;
 <html lang="en">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Advertising — Voxu Admin</title>
+  <title>Advertising — Uvoz Admin</title>
   <meta name="csrf" content="<?= csrfToken() ?>"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/admin.css"/>

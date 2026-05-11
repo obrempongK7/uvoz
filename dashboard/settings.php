@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — User Settings · Socimo-inspired layout
+ * Uvoz — User Settings · Socimo-inspired layout
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -13,7 +13,7 @@ requireAuth();
 $user     = auth();
 $userId   = (int)$user['id'];
 $settings = getPlatformSettings();
-$appName  = clean($settings['app_name'] ?? 'Voxu');
+$appName  = clean($settings['app_name'] ?? 'Uvoz');
 $theme    = getTheme();
 $section  = sanitize($_GET['s'] ?? 'profile');
 $success  = '';
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } elseif ($action === 'theme') {
         $t = in_array($_POST['theme'] ?? '', ['dark','light']) ? $_POST['theme'] : 'dark';
-        setcookie('voxu_theme', $t, time() + 60*60*24*365, '/');
+        setcookie('uvoz_theme', $t, time() + 60*60*24*365, '/');
         $success = 'Theme preference saved!';
         $theme   = $t;
     }
@@ -157,13 +157,13 @@ if (!empty($_GET['saved'])) $success = 'Changes saved!';
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
   <title>Settings — <?= $appName ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>">
 
 <!-- TOP NAV -->
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:16px;font-weight:700;color:var(--text)">⚙️ Settings</div>
   <div class="sk-nav-actions">
     <a href="/dashboard/notifications.php" class="sk-nav-btn">
@@ -416,7 +416,7 @@ if (!empty($_GET['saved'])) $success = 'Changes saved!';
       <div class="settings-section-title">Choose Language</div>
       <p style="font-size:14px;color:var(--text2);margin-bottom:16px">Select your preferred language. Changes apply immediately without a page reload.</p>
       <div style="display:flex;flex-direction:column;gap:6px">
-        <?php foreach (VOXU_LANGUAGES as $code => $meta): ?>
+        <?php foreach (UVOZ_LANGUAGES as $code => $meta): ?>
         <div class="sk-lang-opt <?= getCurrentLang()===$code?'active':'' ?>"
           onclick="setLangSetting('<?= $code ?>')"
           style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--radius);border:1px solid var(--border);cursor:pointer;transition:var(--transition)">
@@ -497,23 +497,23 @@ if (!empty($_GET['saved'])) $success = 'Changes saved!';
 </nav>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 function applyTheme(t) {
   document.body.className = 'theme-' + t;
-  document.cookie = 'voxu_theme=' + t + ';path=/;max-age=31536000';
+  document.cookie = 'uvoz_theme=' + t + ';path=/;max-age=31536000';
   document.getElementById('themeInput').value = t;
   document.getElementById('themeForm').submit();
 }
 function setLangSetting(code) {
-  document.cookie = 'voxu_lang=' + encodeURIComponent(code) + ';path=/;max-age=31536000;SameSite=Lax';
+  document.cookie = 'uvoz_lang=' + encodeURIComponent(code) + ';path=/;max-age=31536000;SameSite=Lax';
   fetch('/api/v1/user/set-lang', {
     method:'POST', credentials:'same-origin',
     headers:{'Content-Type':'application/json','X-CSRF-Token':getCsrfToken()||'','X-Requested-With':'XMLHttpRequest'},
     body:JSON.stringify({lang:code})
   }).finally(() => { Toast.success('Language changed!'); setTimeout(() => location.reload(), 800); });
 }
-VoxuI18n.init();
+UvozI18n.init();
 </script>
 </body>
 </html>

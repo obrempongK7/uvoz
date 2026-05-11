@@ -755,28 +755,28 @@ switch (true) {
 
     // ── SET LANGUAGE ─────────────────────────────────────
     case $path === 'user/set-lang' && $method === 'POST':
-        if (!defined('VOXU_LANGUAGES')) require_once __DIR__ . '/../../core/i18n.php';
+        if (!defined('UVOZ_LANGUAGES')) require_once __DIR__ . '/../../core/i18n.php';
         $lang = sanitize($input['lang'] ?? 'en');
-        $allowed = array_keys(VOXU_LANGUAGES);
+        $allowed = array_keys(UVOZ_LANGUAGES);
         if (!in_array($lang, $allowed)) jsonError('Invalid language');
-        $_SESSION['voxu_lang'] = $lang;
-        setcookie('voxu_lang', $lang, time()+60*60*24*365, '/', '', false, false);
+        $_SESSION['uvoz_lang'] = $lang;
+        setcookie('uvoz_lang', $lang, time()+60*60*24*365, '/', '', false, false);
         jsonSuccess('Language set', ['lang' => $lang]);
 
     // ── GET LANGUAGE STRINGS ──────────────────────────────
     case $path === 'i18n/strings' && $method === 'GET':
-        if (!defined('VOXU_LANGUAGES')) require_once __DIR__ . '/../../core/i18n.php';
-        global $VOXU_STRINGS;
+        if (!defined('UVOZ_LANGUAGES')) require_once __DIR__ . '/../../core/i18n.php';
+        global $UVOZ_STRINGS;
         $lang    = sanitize($_GET['lang'] ?? getCurrentLang());
-        $allowed = array_keys(VOXU_LANGUAGES);
+        $allowed = array_keys(UVOZ_LANGUAGES);
         if (!in_array($lang, $allowed)) $lang = 'en';
         $strings = [];
-        foreach ($VOXU_STRINGS as $key => $translations) {
+        foreach ($UVOZ_STRINGS as $key => $translations) {
             $strings[$key] = $translations[$lang] ?? $translations['en'] ?? $key;
         }
         header('Content-Type: application/json');
         header('Cache-Control: public, max-age=86400');
-        echo json_encode(['success'=>true,'lang'=>$lang,'strings'=>$strings,'rtl'=> VOXU_LANGUAGES[$lang]['rtl'] ?? false]);
+        echo json_encode(['success'=>true,'lang'=>$lang,'strings'=>$strings,'rtl'=> UVOZ_LANGUAGES[$lang]['rtl'] ?? false]);
         exit;
 
 
@@ -797,7 +797,7 @@ switch (true) {
         jsonResponse(['reactions' => $reactions, 'mine' => $mine]);
 
     // ── VIDEO / VOICE REPLY ───────────────────────────────
-    case $path === 
+    case $path === "voice/reply" && $method === "POST":
 
     // ── USER ADS — CREATE ─────────────────────────────
     case $path === 'ads/create' && $method === 'POST':

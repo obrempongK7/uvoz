@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — User Ad Campaigns · Self-serve advertising
+ * Uvoz — User Ad Campaigns · Self-serve advertising
  * @author  Jcode | ObrempongK
  */
 require_once __DIR__ . '/../config.php';
@@ -14,7 +14,7 @@ $user     = auth();
 $userId   = (int)$user['id'];
 $wallet   = getUserWallet($userId);
 $settings = getPlatformSettings();
-$appName  = clean($settings['app_name'] ?? 'Voxu');
+$appName  = clean($settings['app_name'] ?? 'Uvoz');
 $symbol   = clean($settings['currency_symbol'] ?? '$');
 $rate     = max(1, (int)($settings['points_to_cash_rate'] ?? 100));
 $theme    = getTheme();
@@ -44,12 +44,12 @@ $tab = sanitize($_GET['tab'] ?? 'my-ads');
   <meta name="csrf-token" content="<?= csrfToken() ?>"/>
   <title>Ad Campaigns — <?= $appName ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/assets/css/voxu.css"/>
+  <link rel="stylesheet" href="/assets/css/uvoz.css"/>
 </head>
 <body class="theme-<?= clean($theme) ?>">
 
 <nav class="sk-topnav">
-  <a href="/dashboard/feed.php" class="sk-logo"><?= $appName ?><span class="dot">.</span></a>
+  <a href="/dashboard/feed.php" class="sk-logo"><img src="/assets/uploads/logo/logo.jpg" alt="<?= $appName ?>" style="height:32px;" /></a>
   <div style="position:absolute;left:50%;transform:translateX(-50%);font-size:16px;font-weight:700;color:var(--text)">📣 Ad Campaigns</div>
   <div class="sk-nav-actions">
     <a href="/dashboard/notifications.php" class="sk-nav-btn">
@@ -282,7 +282,7 @@ $tab = sanitize($_GET['tab'] ?? 'my-ads');
 </nav>
 
 <div id="toast-container"></div>
-<script src="/assets/js/voxu.js"></script>
+<script src="/assets/js/uvoz.js"></script>
 <script>
 const PLACEMENT_COSTS = <?= json_encode(array_map(fn($v) => $v['pts'], $PLACEMENT_COSTS)) ?>;
 const PLACEMENTS      = <?= json_encode($PLACEMENT_COSTS) ?>;
@@ -403,7 +403,7 @@ async function toggleAd(id, btn) {
 
 // Init first placement selected
 selectPlacement('feed_top');
-VoxuI18n.init();
+UvozI18n.init();
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* ============================================================
-   VOXU — Main Application JavaScript
+   UVOZ — Main Application JavaScript
    ============================================================ */
 
 'use strict';
@@ -92,14 +92,14 @@ function toggleTheme() {
   const body = document.body;
   if (body.classList.contains('theme-light')) {
     body.classList.replace('theme-light', 'theme-dark');
-    document.cookie = 'voxu_theme=dark;path=/;max-age=31536000';
+    document.cookie = 'uvoz_theme=dark;path=/;max-age=31536000';
   } else {
     if (body.classList.contains('theme-dark')) {
       body.classList.replace('theme-dark', 'theme-light');
     } else {
       body.classList.add('theme-light');
     }
-    document.cookie = 'voxu_theme=light;path=/;max-age=31536000';
+    document.cookie = 'uvoz_theme=light;path=/;max-age=31536000';
   }
 }
 
@@ -111,7 +111,7 @@ const VoiceRecorder = {
   timerInterval: null,
   blob: null,
   duration: 0,
-  maxDuration: (window.VOXU_MAX_RECORD_SECS ?? 180), // set per user plan
+  maxDuration: (window.UVOZ_MAX_RECORD_SECS ?? 180), // set per user plan
 
   async init(circleId, timeId, wavId, submitBtnId) {
     this.circleEl = document.getElementById(circleId);
@@ -596,7 +596,7 @@ const StatusViewer = {
       const div = document.createElement('div');
       div.className = 'text-status';
       div.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:40px 24px';
-      div.style.background = s.bg_color || 'linear-gradient(135deg,#6C3BFF,#00D1FF)';
+      div.style.background = s.bg_color || 'linear-gradient(135deg,#6347eb,#00D1FF)';
       div.textContent = s.text || s.caption || '';
       content.insertBefore(div, content.firstChild);
     }
@@ -792,16 +792,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /* ══════════════════════════════════════════════════════
-   VOXU i18n — Client-side language engine
+   UVOZ i18n — Client-side language engine
    ══════════════════════════════════════════════════════ */
-const VoxuI18n = {
+const UvozI18n = {
   strings: {},
   lang: 'en',
   rtl: false,
 
   // Get current lang from cookie
   getCookieLang() {
-    const m = document.cookie.match(/(?:^|; )voxu_lang=([^;]+)/);
+    const m = document.cookie.match(/(?:^|; )uvoz_lang=([^;]+)/);
     return m ? m[1] : 'en';
   },
 
@@ -864,12 +864,12 @@ const VoxuI18n = {
 // Override setLang to use this engine
 function setLang(code) {
   const _d = new Date(); _d.setFullYear(_d.getFullYear()+1);
-  document.cookie = 'voxu_lang='+encodeURIComponent(code)+';path=/;expires='+_d.toUTCString()+';SameSite=Lax';
+  document.cookie = 'uvoz_lang='+encodeURIComponent(code)+';path=/;expires='+_d.toUTCString()+';SameSite=Lax';
   // Close the dropdown immediately
   const menu = document.getElementById('langMenu');
   if (menu) menu.classList.add('hidden');
   // Update page live without full reload for same-lang languages
-  VoxuI18n.load(code).then(() => {
+  UvozI18n.load(code).then(() => {
     // Also persist server-side
     fetch('/api/v1/user/set-lang', {
       method: 'POST', credentials: 'same-origin',

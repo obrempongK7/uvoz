@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Centralized Security Layer
+ * Uvoz — Centralized Security Layer
  * @author  Jcode | ObrempongK
  *
  * Include at the top of every page that needs protection:
@@ -300,7 +300,7 @@ class Security
           h1{font-size:48px;font-weight:800;color:#FF4444;margin-bottom:8px}
           h2{font-size:20px;margin-bottom:12px}
           p{color:#A0A0B0;font-size:14px;margin-bottom:20px}
-          a{display:inline-block;padding:10px 24px;background:#6C3BFF;color:#fff;
+          a{display:inline-block;padding:10px 24px;background:#6347eb;color:#fff;
             border-radius:8px;text-decoration:none;font-weight:600}
         </style>
         </head><body>

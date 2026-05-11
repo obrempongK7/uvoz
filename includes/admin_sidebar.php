@@ -1,6 +1,6 @@
 <?php
 /**
- * Voxu — Shared Admin Sidebar Partial
+ * Uvoz — Shared Admin Sidebar Partial
  * @author  Jcode | ObrempongK
  * Include this in every admin page: require_once __DIR__ . '/../includes/admin_sidebar.php';
  * Requires $admin (array) and $activeMenu (string) to be set before include.
@@ -13,7 +13,7 @@ try { $unreadNotifs       = DB::count('notifications', 'user_id=0 AND is_read=0'
 ?>
 <aside class="admin-sidebar" id="sidebar">
   <div class="admin-logo">
-    <div class="logo-text">Vo<span>xu</span></div>
+    <div class="logo-text"><img src="/assets/uploads/logo/logo.jpg" alt="Uvoz" style="height:32px;" /></div>
     <div class="admin-tag">Admin Panel</div>
   </div>
   <nav class="sidebar-nav">

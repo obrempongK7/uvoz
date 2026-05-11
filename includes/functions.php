@@ -3,7 +3,7 @@
  * @author  Jcode | ObrempongK
  */
 /* ============================================================
-   VOXU — Core Helper Functions
+   UVOZ — Core Helper Functions
    ============================================================ */
 if (!defined('APP_NAME')) require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/db.php';
@@ -71,7 +71,7 @@ function redirectBack(string $fallback = '/'): void {
 }
 
 function getTheme(): string {
-    $theme = $_COOKIE['voxu_theme'] ?? 'dark';
+    $theme = $_COOKIE['uvoz_theme'] ?? 'dark';
     return $theme === 'light' ? 'light' : 'dark';
 }
 
@@ -391,10 +391,10 @@ function createNotification(int $userId, string $type, string $message, ?string 
 /* ── PLATFORM SETTINGS ────────────────────────────────── */
 function getPlatformSettings(): array {
     static $settings = null;
-    if ($settings !== null && empty($GLOBALS['__voxu_settings_cache_cleared'])) {
+    if ($settings !== null && empty($GLOBALS['__uvoz_settings_cache_cleared'])) {
         return $settings;
     }
-    unset($GLOBALS['__voxu_settings_cache_cleared']);
+    unset($GLOBALS['__uvoz_settings_cache_cleared']);
     try {
         $rows = DB::query('SELECT setting_key, setting_value FROM platform_settings');
         $settings = [];
@@ -425,7 +425,7 @@ function setSetting(string $key, string $value): void {
 function clearSettingsCache(): void {
     static $ref = null;
     // Force reset by calling with a special flag via a static variable trick
-    $GLOBALS['__voxu_settings_cache_cleared'] = true;
+    $GLOBALS['__uvoz_settings_cache_cleared'] = true;
 }
 
 /* ── TIME HELPERS ─────────────────────────────────────── */
@@ -650,7 +650,7 @@ function getUserDailyEarningLimit(int $userId): int {
  */
 function planBadge(array $plan): string {
     if (($plan['slug'] ?? 'free') === 'free') return '';
-    $color = htmlspecialchars($plan['color'] ?? '#6C3BFF', ENT_QUOTES);
+    $color = htmlspecialchars($plan['color'] ?? '#6347eb', ENT_QUOTES);
     $icon  = $plan['icon']  ?? '⭐';
     $name  = htmlspecialchars($plan['name'] ?? 'Premium', ENT_QUOTES);
     return '<span style="display:inline-flex;align-items:center;gap:3px;background:' . $color . '22;color:' . $color . ';border:1px solid ' . $color . '55;border-radius:12px;padding:2px 8px;font-size:11px;font-weight:600">' . $icon . ' ' . $name . '</span>';
@@ -851,7 +851,7 @@ function sendVerificationEmail(int $userId, string $email, string $username): bo
             'created_at' => date('Y-m-d H:i:s'),
         ]);
         $s       = getPlatformSettings();
-        $appName = $s['app_name']  ?? 'Voxu';
+        $appName = $s['app_name']  ?? 'Uvoz';
         $appUrl  = APP_URL;
         $link    = $appUrl . '/auth/verify-email.php?token=' . urlencode($token);
         // Basic mail — replace with Mailgun/SES for production

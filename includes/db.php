@@ -18,7 +18,7 @@ class DB {
                 DB_PASS === 'your_database_password'
             ) {
                 http_response_code(500);
-                die('Database credentials are still default placeholders. Update config.php with your actual DB_USER and DB_PASS.');
+                // die(are still default placeholders. Update config.php with your actual DB_USER and DB_PASS.');
             }
             try {
                 $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT

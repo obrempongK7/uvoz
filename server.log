@@ -1,0 +1,9 @@
+[Mon May 11 17:10:35 2026] PHP 8.3.6 Development Server (http://localhost:8000) started
+[Mon May 11 17:10:38 2026] [::1]:52976 Accepted
+[Mon May 11 17:10:38 2026] PHP Fatal error:  Cannot redeclare auth() (previously declared in /app/includes/db.php:17) in /app/includes/functions.php on line 29
+[Mon May 11 17:10:38 2026] [::1]:52976 [500]: GET /index.php - Cannot redeclare auth() (previously declared in /app/includes/db.php:17) in /app/includes/functions.php on line 29
+[Mon May 11 17:10:38 2026] [::1]:52976 Closing
+[Mon May 11 17:10:40 2026] [::1]:52992 Accepted
+[Mon May 11 17:10:40 2026] PHP Fatal error:  Cannot redeclare auth() (previously declared in /app/includes/db.php:17) in /app/includes/functions.php on line 29
+[Mon May 11 17:10:40 2026] [::1]:52992 [500]: GET /dashboard/ - Cannot redeclare auth() (previously declared in /app/includes/db.php:17) in /app/includes/functions.php on line 29
+[Mon May 11 17:10:40 2026] [::1]:52992 Closing

@@ -1,0 +1,95 @@
+# ============================================================
+# Voxu — Apache / cPanel Configuration
+# @author  Jcode | ObrempongK
+#
+# PHP upload limits for PHP-FPM are in .user.ini (same folder).
+# ============================================================
+
+Options -Indexes
+Options -MultiViews
+ServerSignature Off
+
+# ── PHP SETTINGS (mod_php environments only) ─────────────────
+<IfModule mod_php.c>
+  php_value upload_max_filesize 60M
+  php_value post_max_size       65M
+  php_value memory_limit        256M
+  php_value max_execution_time  120
+</IfModule>
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 60M
+  php_value post_max_size       65M
+  php_value memory_limit        256M
+  php_value max_execution_time  120
+</IfModule>
+<IfModule mod_php8.c>
+  php_value upload_max_filesize 60M
+  php_value post_max_size       65M
+  php_value memory_limit        256M
+  php_value max_execution_time  120
+</IfModule>
+
+# ── SECURITY HEADERS ──────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "microphone=(self), camera=(self)"
+  Header always unset X-Powered-By
+</IfModule>
+
+# ── COMPRESSION ───────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+</IfModule>
+
+# ── BROWSER CACHE ─────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg             "access plus 1 month"
+  ExpiresByType image/png              "access plus 1 month"
+  ExpiresByType image/webp             "access plus 1 month"
+  ExpiresByType image/gif              "access plus 1 month"
+  ExpiresByType image/svg+xml          "access plus 1 month"
+  ExpiresByType text/css               "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType audio/webm             "access plus 1 week"
+  ExpiresByType audio/mpeg             "access plus 1 week"
+  ExpiresByType video/mp4              "access plus 1 week"
+</IfModule>
+
+# ── URL REWRITING ─────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Block direct access to sensitive files
+  RewriteRule ^config\.php$             - [F,L]
+  RewriteRule ^\.user\.ini$             - [F,L]
+  RewriteRule ^core/                    - [F,L]
+  RewriteRule ^includes/                - [F,L]
+  RewriteRule ^\.env$                   - [F,L]
+  RewriteRule ^\.git/                   - [F,L]
+  RewriteRule ^composer\.(json|lock)$   - [F,L]
+
+  # API router
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^api/v1/(.*)$             api/v1/index.php [QSA,L]
+
+  # Pretty URL: /post/{id}
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^post/([0-9]+)/?$         post.php?id=$1 [QSA,L]
+
+  # Pretty URL: /@username/{id}
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^@([a-zA-Z0-9_]+)/([0-9]+)/?$  post.php?u=$1&id=$2 [QSA,L]
+</IfModule>
+
+# ── PROTECT INSTALLER ─────────────────────────────────────────
+# Uncomment after running install.php:
+# <Files "install.php">
+#   Require all denied
+# </Files>

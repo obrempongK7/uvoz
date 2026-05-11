@@ -1,0 +1,16 @@
+# Block all script execution in uploads directory
+# This file must be in /assets/uploads/.htaccess
+# @author  Jcode | ObrempongK
+
+<FilesMatch "\.(php|php3|php4|php5|php7|php8|phtml|phar|cgi|pl|py|asp|aspx|jsp)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Also deny .htaccess overrides in subdirectories of uploads
+Options -Indexes

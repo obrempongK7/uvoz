@@ -1,0 +1,13 @@
+{
+    "name": "uvoz/app",
+    "description": "Uvoz App",
+    "authors": [
+        {
+            "name": "Jcode",
+            "email": "jcode@example.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^12.5"
+    }
+}

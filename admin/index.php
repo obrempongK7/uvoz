@@ -119,9 +119,17 @@ $symbol   = $settings['currency_symbol'] ?? '$';
         <div class="chart-title">User Registrations (Last 7 Days)</div>
         <div class="chart-area" id="regChart">
           <?php
+          $counts = [];
+          $endDate = date('Y-m-d');
+          $startDate = date('Y-m-d', strtotime('-6 days'));
+          $rows = DB::query("SELECT DATE(created_at) AS d, COUNT(*) AS n FROM users WHERE created_at >= ? AND created_at < ? + INTERVAL 1 DAY GROUP BY DATE(created_at)", [$startDate, $endDate]);
+          foreach ($rows as $row) {
+              $counts[$row['d']] = $row['n'];
+          }
+
           for ($i = 6; $i >= 0; $i--) {
               $date = date('Y-m-d', strtotime("-{$i} days"));
-              $cnt  = DB::first("SELECT COUNT(*) AS n FROM users WHERE DATE(created_at)=?", [$date])['n'] ?? 0;
+              $cnt  = $counts[$date] ?? 0;
               $pct  = max(4, min(100, $cnt * 10 + 4));
               echo "<div class='chart-bar' style='height:{$pct}%' title='{$date}: {$cnt}'></div>";
           }

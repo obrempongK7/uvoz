@@ -638,14 +638,6 @@ function getUserRecordingLimit(int $userId): int {
 }
 
 /**
- * Get user's effective max daily earnings (applies plan multiplier).
- */
-function getUserDailyEarningLimit(int $userId): int {
-    $plan = getUserPlan($userId);
-    return (int)($plan['max_daily_earnings'] ?? 1000);
-}
-
-/**
  * Get plan badge HTML.
  */
 function planBadge(array $plan): string {

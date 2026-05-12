@@ -2,7 +2,7 @@
 /**
  * @author  Jcode | ObrempongK
  * Uvoz — Admin Logout
- * FIX: Removed early session_start() that used wrong session name.
+ * Note: Removed early session_start() that used wrong session name.
  *      config.php handles session bootstrap with correct 'uvoz_sess' name.
  */
 require_once __DIR__ . '/../config.php';

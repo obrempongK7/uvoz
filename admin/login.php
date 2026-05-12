@@ -2,7 +2,7 @@
 /**
  * @author  Jcode | ObrempongK
  * Uvoz — Admin Login
- * FIX: Removed manual session_start() that fired before config.php set
+ * Note: Removed manual session_start() that fired before config.php set
  *      session_name('uvoz_sess'). This caused admin_id to be stored in
  *      PHPSESSID while all other admin pages read from uvoz_sess → loop.
  */

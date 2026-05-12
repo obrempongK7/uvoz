@@ -821,13 +821,6 @@ function getOrCreateConversation(int $userA, int $userB): int {
 /* ── BOOST HELPERS ─────────────────────────────────── */
 
 /**
- * Check if a post is currently boosted.
- */
-function isBoosted(int $postId): bool {
-    return DB::count('post_boosts', 'post_id=? AND status="active" AND expires_at > NOW()', [$postId]) > 0;
-}
-
-/**
  * Get boost info for a post.
  */
 function getBoost(int $postId): ?array {

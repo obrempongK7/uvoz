@@ -553,10 +553,16 @@ switch (true) {
             'status'     => 'active',
             'created_at' => date('Y-m-d H:i:s'),
         ]);
-        foreach ($tags as $tag) {
-            try {
-                DB::exec("INSERT IGNORE INTO post_hashtags (post_id, hashtag) VALUES (?,?)", [$postId, $tag]);
-            } catch (Throwable) {}
+        if (!empty($tags)) {
+            $placeholders = [];
+            $params = [];
+            foreach ($tags as $tag) {
+                $placeholders[] = '(?,?)';
+                $params[] = $postId;
+                $params[] = $tag;
+            }
+            $query = "INSERT IGNORE INTO post_hashtags (post_id, hashtag) VALUES " . implode(',', $placeholders);
+            try { DB::exec($query, $params); } catch (Throwable) {}
         }
         addPoints((int)$user['id'], (int)getSetting('points_per_post', DEFAULT_POINTS_PER_POST), 'text_post', 'Points for text post');
         jsonSuccess('Posted!', ['post_id' => $postId]);

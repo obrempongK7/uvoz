@@ -58,18 +58,6 @@ function redirect(string $path): void {
     exit;
 }
 
-function redirectBack(string $fallback = '/'): void {
-    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-    $host   = $_SERVER['HTTP_HOST'] ?? parse_url(APP_URL, PHP_URL_HOST) ?? 'localhost';
-    $ref    = $_SERVER['HTTP_REFERER'] ?? '';
-    if ($ref && (str_starts_with($ref, APP_URL) || str_contains($ref, (string)$host))) {
-        header('Location: ' . $ref, true, 302);
-    } else {
-        header('Location: ' . $scheme . '://' . $host . $fallback, true, 302);
-    }
-    exit;
-}
-
 function getTheme(): string {
     $theme = $_COOKIE['uvoz_theme'] ?? 'dark';
     return $theme === 'light' ? 'light' : 'dark';

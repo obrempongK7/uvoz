@@ -462,10 +462,6 @@ function sanitizeUrl(mixed $url, array $allowedSchemes = ['http', 'https']): str
     return $url;
 }
 
-/* ── FRAUD CHECK ──────────────────────────────────────── */
-function checkFraudFlags(int $userId): bool {
-    return DB::count('fraud_flags', 'user_id=? AND status="active"', [$userId]) > 0;
-}
 
 /* ── ADMIN AUDIT LOG ──────────────────────────────────── */
 function logAdminAction(int $adminId, string $action, string $description, ?array $data = null): void {

@@ -443,9 +443,6 @@ function formatCurrency(float $amount, string $currency = ''): string {
     return $currency . ' ' . number_format($amount, 2);
 }
 
-function formatPoints(int $points): string {
-    return number_format($points) . ' pts';
-}
 
 function sanitizeUrl(mixed $url, array $allowedSchemes = ['http', 'https']): string {
     $url = trim((string)$url);
